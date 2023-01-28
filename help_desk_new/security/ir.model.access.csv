@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_Questions,access.questioins.answers,model_questioins_answers,helpdesk.group_helpdesk_manager,1,1,1,1
+access_Questions1,access.questioins.answers,model_questioins_answers,helpdesk.group_helpdesk_user,1,0,0,0
+access_Tiposdeconsult,access.consult.type,model_consult_type,helpdesk.group_helpdesk_manager,1,1,1,1
+access_Tiposdeconsult1,access.consult.type,model_consult_type,helpdesk.group_helpdesk_user,1,0,0,0

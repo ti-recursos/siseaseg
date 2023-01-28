@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+
+    <record id="journal_bank_100" model="account.journal">
+        <field name="name">GRUPO TECNOLÓGICO</field>
+        <field name="type">bank</field>
+        <field name="code">GRTE 01</field>
+    </record>
+
+    <record id="journal_bank_102" model="account.journal">
+        <field name="name">BAC CREDOMATIC</field>
+        <field name="type">bank</field>
+        <field name="code">BAC 01</field>
+    </record>
+
+    <record id="journal_bank_151" model="account.journal">
+        <field name="name">BANCO NACIONAL</field>
+        <field name="type">bank</field>
+        <field name="code">BANA 01</field>
+    </record>
+
+    <record id="journal_bank_152" model="account.journal">
+        <field name="name">BCR</field>
+        <field name="type">bank</field>
+        <field name="code">BCR 01</field>
+    </record>
+
+    <record id="journal_bank_500" model="account.journal">
+        <field name="name">RED ALÓ</field>
+        <field name="type">bank</field>
+        <field name="code">RAL 01</field>
+    </record>
+
+</odoo>

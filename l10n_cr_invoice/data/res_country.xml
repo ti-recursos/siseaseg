@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="base.cr" model="res.country">
+            <field name="name">Costa Rica</field>
+            <field name="code">cr</field>
+            <field name="currency_id" ref="base.CRC" />
+            <field eval="506" name="phone_code" />
+            <field name="vat_label">Identificación</field>
+        </record>
+    </data>
+</odoo>

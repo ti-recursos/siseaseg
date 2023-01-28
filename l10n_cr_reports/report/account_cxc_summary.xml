@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Reporte de Facturación-->
+    <report id="account_cxc_report"
+    model="account.cxc.report.wizard"
+    string="Reporte Antigüedad de saldos"
+    report_type="qweb-pdf"
+    name="l10n_cr_reports.account_cxc_report_view"
+    paperformat="l10n_cr_reports.paperformat_letter_landscape_report"
+    menu="False"/>
+
+
+
+<template id="account_cxc_report_view">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <div class="page" >
+
+                <!-- DETALLE -->
+                <table class="table table-condensed table-bordered" style="font-size: 14px;">
+                    <thead>
+                        <th >Cliente</th>
+                        <th >Número</th>
+                        <th >Fecha</th>
+                        <th>Sin Vencer</th>
+                        <th>Igual o menor a 30</th>
+                        <th>31 - 60</th>
+                        <th>61 - 90</th>
+                        <th>+ 90</th>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr>
+                                <td><span t-esc="doc['partner']"/></td>
+                                <td><span t-esc="doc['name']"/></td>
+                                <td><span t-esc="doc['date']"/></td>
+
+                                <td><span t-esc="doc['sin_vencer']" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/></td>
+                                <td><span t-esc="doc['menos_30']" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/></td>
+                                <td><span t-esc="doc['30_60']" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/></td>
+                                <td><span t-esc="doc['61_90']" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/></td>
+                                <td><span t-esc="doc['90_mas']" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/></td>
+
+                            </tr>
+
+                        </t>
+
+
+                    </tbody>
+                </table>
+                <!-- RESUMEN -->
+                <table style="width:100%" class="mt30 mb30">
+                    <tr style="border:1px solid white;">
+                        <td style="width:20%" class="text-center">
+                            <br/><br/>
+                        </td>
+                        <td style="width:20%" class="text-center">
+                            <br/><br/>
+                        </td>
+                        <td style="width:20%" class="text-center">
+                            <br/><br/>
+                        </td>
+                        <td style="border:1px solid white;" class="text-right">
+                            <table class="table table-sm">
+                                <tr>
+                                    <td><strong>Total sin vencer</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="total_sin_vencer" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total menor a 30</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="total_menos_30" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total 30 - 60</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="total_30_60" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total 61 - 90</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="total_61_90" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total mayor a 90 días</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="total_90_mas" t-options='{"widget": "monetary", "display_currency": total_company.currency_id}'/>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </t>
+    </t>
+</template>
+</odoo>

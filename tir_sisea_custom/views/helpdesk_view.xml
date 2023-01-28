@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="helpdesk_ticket_view_form" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.form.inherit</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="subscription_id" domain="[('partner_id.id', '=?', partner_id), ('stage_category', 'not in', ['closed'])]"/>
+                <p><strong>Total Unpaid Documents</strong></p>
+                <button name="action_view_partner_invoices" type="object" string="Invoices: " style="background-color:#00A09D; color: white" >
+                    <field name="count_invoice" readonly="1"/>
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <separator string="Persona que Reporta"/>
+                <button name="action_clean" class="oe_right btn btn-primary" type="object" string="Limpiar" colspan="2"/>
+                <field name="reporte_id" domain="[('sub_id', '=?', subscription_id)]" attrs="{'invisible': [('subscription_id', '=', False)]}"/>
+                <field name="persona_reporte"/>
+                <field name="tel_reporte"/>
+                <field name="movil_reporte"/>
+                <field name="relacion_reporte"/>
+                <field name="correo_reporte"/>
+            </xpath>
+            <xpath expr="//field[@name='description']" position="after">
+                <notebook>
+                    <page string="Tickets Asociados al Cliente" name="ticket_realted">
+                        <field name="ticket_ids" options="{'no_open': True}">
+                            <tree default_order="sequence asc">
+                              <field name="model_id" invisible="1"/>
+                              <field name="name" invisible="1"/>
+                              <field name="sequence" invisible="1"/>
+                              <field name="subscription_id" />
+                              <field name="parent_id" />
+                              <field name="description" />
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+            <xpath expr="//field[@name='email_cc']" position="after">
+                <hr colspan="4"/>
+                <field name="partner_direction" readonly="1"/>
+                <hr colspan="4"/>
+                <field name="n_temp"/>
+                <hr colspan="4"/>
+                <field name="comment"/>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object"
+                    name="action_open_helpdesk_ticket" context="{'default_partner_id': active_id}" icon="fa-life-ring" attrs="{'invisible': [('ticket_count', '=', 0)]}">
+                    <div class="o_stat_info">
+                        <field name="ticket_count" class="o_stat_value"/>
+                        <span class="o_stat_text"> Tickets</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

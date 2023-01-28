@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="crm_stage_form_inherit" model="ir.ui.view">
+        <field name="name">crm.stage.form.inherit.custom</field>
+        <field name="model">crm.stage</field>
+        <field name="inherit_id" ref="crm.crm_stage_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_count']" position="before">
+                <group>
+                    <field name="calificado"/>
+                    <field name="propuesta"/>
+                    <field name="formalizacion"/>
+                    <field name="valida_doc"/>
+                    <field name="cuenta_monitoreo"/>
+                </group>
+                <group>
+                    <field name="coordinacion"/>
+                    <field name="instalacion"/>
+                    <field name="valida_cuenta"/>
+                    <field name="soporte"/>
+                    <field name="conta"/>
+                    <field name="finalizado"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

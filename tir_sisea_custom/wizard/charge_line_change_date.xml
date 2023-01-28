@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="charge_line_change_view" model="ir.ui.view">
+            <field name="name">Change Date Automatic Charges</field>
+            <field name="model">automatic.charge.line.change</field>
+            <field name="arch" type="xml">
+            <form string="Ajustes Cargos Automáticos">
+                <separator string="Fecha"/>
+                <group>
+                  <group>
+                    <field name="date"/>
+                  </group>
+                  <group>
+                    <field name="process" widget="boolean_button"/>
+                  </group>
+                </group>
+                <footer>
+                    <button string="Cambiar Fecha" name="resequence" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Volver a Generar Archivo" name="regenerate_file" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+            </field>
+        </record>
+
+        <record id="action_charge_line_change" model="ir.actions.act_window">
+            <field name="name">Change Date</field>
+            <field name="res_model">automatic.charge.line.change</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="charge_line_change_view"/>
+            <field name="target">new</field>
+            <field name="groups_id" eval="[(6, 0, [ref('tir_sisea_custom.sisea_group_admin'), ref('tir_sisea_custom.sisea_group_user')])]"/>
+            <field name="binding_model_id" ref="tir_sisea_custom.model_automatic_charge_line" />
+            <field name="binding_view_types">list</field>
+        </record>
+    </data>
+</odoo>

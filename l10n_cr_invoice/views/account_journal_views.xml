@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_journal_inherit_form" model="ir.ui.view">
+            <field name="name">account.journal.form.inherit</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="state_fe"/>
+                </xpath>
+
+               <xpath expr="//page[1]" position="after">
+                    <page string="Facturación Electrónica" attrs="{'invisible':[('state_fe','!=',True)]}">
+                        <group cols="2">
+                            <group cols="2">
+                                <field name="FE_sequence_id" attrs="{'required':[('type','=','sale'), ('state_fe','=',True)]}" domain="[('company_id', '=', company_id)]"/>
+                                <field name="TE_sequence_id" attrs="{'required':[('type','=','sale'), ('state_fe','=',True)]}"  domain="[('company_id', '=', company_id)]"/>
+                                <field name="FEE_sequence_id" attrs="{'required':[('type','=','sale'), ('state_fe','=',True)]}" domain="[('company_id', '=', company_id)]"/>
+                            </group>
+                            <group cols="2">
+                                <field name="NC_sequence_id" attrs="{'required':[('type','=','sale'), ('state_fe','=',True)]}" domain="[('company_id', '=', company_id)]"/>
+                                <field name="ND_sequence_id" attrs="{'required':[('type','=','sale'), ('state_fe','=',True)]}" domain="[('company_id', '=', company_id)]"/>
+                            </group>
+                            <group cols="2">
+                                <field name="sucursal" attrs="{'required':[('type','=','sale'), ('state_fe','=',True)]}"/>
+                                <field name="terminal" attrs="{'required':[('type','=','sale'), ('state_fe','=',True)]}" />
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <!--xpath expr="//field[@name='type']" position="after">
+					<field name="terminal" attrs="{'invisible':[('type','!=','sale')],'required':[('type','=','sale')]}"/>
+					<field name="sucursal" attrs="{'invisible':[('type','!=','sale')],'required':[('type','=','sale')]}"/>
+				</xpath-->
+
+            </field>
+        </record>
+    </data>
+</odoo>

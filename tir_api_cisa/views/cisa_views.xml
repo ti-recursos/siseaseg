@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="action_cisa_historial" model="ir.actions.act_window">
+        <field name="name">Historial Cisa</field>
+        <field name="res_model">cisa</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="action_cisa_payment_historial" model="ir.actions.act_window">
+        <field name="name">Historial Banco</field>
+        <field name="res_model">cisa.payment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smilling_face">
+                Importa un documento aquí!
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_cisa" name="CISA" parent="account.menu_finance_reports" sequence="5"/>
+    <menuitem id="menu_cisa_historial" name="Historial" action="action_cisa_historial" parent="menu_cisa"/>
+    <menuitem id="menu_cisa_payment_historial" name="Pagos del Banco" action="action_cisa_payment_historial" parent="menu_cisa"/>
+
+    <record id="cisa_view_tree" model="ir.ui.view">
+        <field name="name">cisa.view.tree</field>
+        <field name="model">cisa</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="fch"/>
+                <field name="name"/>
+                <field name="res"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="cisa_payment_tree_view" model="ir.ui.view">
+        <field name="name">cisa.payment.tree</field>
+        <field name="model">cisa.payment</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_import"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="cisa_payment_form_view" model="ir.ui.view">
+        <field name="name">cisa.payment.form</field>
+        <field name="model">cisa.payment</field>
+        <field name="arch" type="xml">
+            <form string="Importar Datos">
+                <header>
+                    <button name="importar" type="object" string="Importar" style="background-color:#00A09D; color: white" attrs="{'invisible':[('state','=', True)]}"></button>
+                 </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="file_data" filename="name" />
+                            <field name="state" invisible="1"/>
+                        </group>
+                        <group>
+                            <button name="state" readonly="1" class="oe_right btn btn-success" style="margin-right: 5px;"  attrs="{'invisible':[('state','=', False)]}">
+                                IMPORTADO <field name="state" readonly="1" invisible="1"/>
+                            </button>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Resumen de Información" name="preview">
+
+                            <group>
+                                <group>
+                                    <h5 style="Montserrat, weight 400, line-height: 1.1"><strong>Documentos del Banco</strong></h5>
+                                </group>
+                                <group>
+                                    <h5 style="Montserrat, weight 400, line-height: 1.1"><strong>Documentos del Odoo</strong></h5>
+                                </group>
+                            </group>
+
+                            <field name="preview_html" widget="html"/>
+                        </page>
+                        <page string="Pagos del Banco" name="payment_lines">
+                            <field name="cisa_payment_line_ids">
+                                <tree>
+                                    <field name="move_id"/>
+                                    <field name="fecha_pago"/>
+                                    <field name="monto_impuesto" sum="monto_impuesto"/>
+                                    <field name="monto_pago" sum="monto_pago"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

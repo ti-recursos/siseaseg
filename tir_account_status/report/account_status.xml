@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Reporte de Facturación-->
+    <report id="account_status_report"
+    model="account.status.report.wizard"
+    string="Partner Account Balance"
+    report_type="qweb-pdf"
+    name="tir_account_status.account_status_report_view"
+    paperformat="base.paperformat_us"
+    menu="False"/>
+
+
+
+<template id="account_status_report_view">
+    <t t-call="web.html_container">
+        <t t-call="web.external_layout">
+            <t t-set="address">
+                <h3>Partner</h3>
+                <span t-esc="partner_id.name" /><br/><br/>
+                <span t-esc="partner_id.street" />
+                <span t-esc="partner_id.street2" /> 
+                <br/> 
+                <span t-esc="partner_id.city" />  
+                <span t-esc="partner_id.state_id.code" />  
+                <span t-esc="partner_id.zip" />  
+                <br/>
+                <span t-esc="partner_id.country_id.name" />
+            </t>
+
+            <div class="page" >
+                <h2>
+                    <span>Estado de Cuenta</span>
+                </h2>
+
+                <!-- DETALLE -->
+                <table class="table table-sm o_main_table">
+                    <thead>
+                        <th>Date</th>
+                        <th>Doc Number</th>
+                        <th>Ref</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                        <th>Balance</th>
+                    </thead>
+                    <tbody class="invoice_tbody">
+                        <tr>
+                            <td> </td>
+                            <td><i><strong>Initial Balance</strong></i></td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td><i><strong><span t-esc="balance_inicial" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></strong></i></td>
+
+                        </tr>
+                        <t t-foreach="docs" t-as="doc">
+                            <tr>
+                                <td><span class="text-nowrap" t-esc="doc['date']"/></td>
+                                <td><span  t-esc="doc['name']"/></td>
+                                <td><span t-esc="doc['ref']"/></td>
+                                <td><span t-esc="doc['debit']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td><span t-esc="doc['credit']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td><span t-esc="doc['balance']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                            </tr>
+                            <tr><div style="page-break-inside: auto"></div></tr>
+                        </t>
+                        <tr>
+                            <td> </td>
+                            <td><i><strong>Ending Balance</strong></i></td>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td><i><strong><span t-esc="total_lineas" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></strong></i></td>
+
+                        </tr>
+                        <tr>
+                            <td> </td>
+                            <td> </td>
+                            <td> </td>
+                            <td><span t-esc="total_debito" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                            <td><span t-esc="total_credito" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                            <td><span t-esc="total_lineas" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <div class="clearfix">
+                    <div id="total" class="row">
+                        <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-7 col-md-6'} ml-auto">
+                            <table class="table table-sm" style="page-break-inside: avoid;">
+                                <tr class="border-black o_subtotal" style="">
+                                    <td><strong>Balance</strong></td>
+                                    <td class="text-right">
+                                        <span t-esc="total_balance" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <table style="width:100%" class="table table-sm">
+                    <thead>
+                        <th class="text-left">Resume</th>
+                        <th class="text-right">Not Expired</th>
+                        <th class="text-right">1-30</th>
+                        <th class="text-right">31-60</th>
+                        <th class="text-right">61-90</th>
+                        <th class="text-right">+90</th>
+                        <th class="text-right">Total</th>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="cxc" t-as="doc">
+                            <tr>
+                                <td>Receivable</td>
+                                <td class="text-right"><span class="text-nowrap text-right" t-esc="doc['sin_vencer']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-nowrap text-right" t-esc="doc['grupo1_30']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-nowrap text-right" t-esc="doc['grupo31_60']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-nowrap text-right" t-esc="doc['grupo61_90']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-nowrap text-right" t-esc="doc['grupo_m_91']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-nowrap text-right" t-esc="doc['total']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                            </tr>
+                        </t>
+                        <!-- 
+                            Esto es para cuentas por pagar
+                        <t t-foreach="cxp" t-as="doc">
+                            <tr>
+                                <td>Payable</td>
+                                <td class="text-right"><span class="text-right" t-esc="doc['sin_vencer']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-right" t-esc="doc['grupo1_30']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-right" t-esc="doc['grupo31_60']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-right" t-esc="doc['grupo61_90']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-right" t-esc="doc['grupo_m_91']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                                <td class="text-right"><span class="text-right" t-esc="doc['total']" t-options='{"widget": "monetary", "display_currency": company_id.currency_id}'/></td>
+                            </tr>
+                        </t>
+                        -->
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </t>
+</template>
+</odoo>

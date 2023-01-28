@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- CHANGE SUBSCRIPTION -->
+        <record id="group_salesubscription_admin" model="res.groups">
+            <field name="name">Permite actualizar el precio masivamente de las suscripciones</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+    </data>
+
+</odoo>

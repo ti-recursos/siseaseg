@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t[@t-set='address']" position="replace">
+            <t t-set="address">
+                <br/>
+                <h2>
+                    <span>Cliente</span>
+                </h2>
+                <div t-if="doc.partner_id" class="mt16">
+                    <span t-field="doc.partner_id.name"/>
+                </div>
+                <div t-if="doc.currency_id" class="mt16">
+                    Modena: <span t-field="doc.currency_id.name"/>
+                </div>
+                <div t-if="doc.partner_id.vat" class="mt16">
+                    <t t-if="doc.company_id.country_id.vat_label" t-esc="doc.company_id.country_id.vat_label" id="inv_tax_id_label"/>
+                    <t t-else="">Identificación</t>: <span t-field="doc.partner_id.vat"/>
+                </div>
+            </t>
+        </xpath>
+
+    </template>
+</odoo>

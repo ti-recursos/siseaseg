@@ -1,0 +1,1 @@
+**Reporte de impuestos por cliente/proveedor, Odoo 14**

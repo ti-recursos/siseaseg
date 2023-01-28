@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data>
+        <record id="view_res_partner_inherit" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='export']" position="after">
+                    <field name="is_extra_fronterizo"  widget="boolean_button" />
+                    <field name="is_zona_franca"  widget="boolean_button" />
+                </xpath>
+
+                <xpath expr="//field[@name='property_account_position_id']" position="after">
+                    <field name="credit_fiscal"  widget="boolean_button" />
+                    <field name="tipo_credit_fiscal" colspan="5" attrs="{'invisible':[('credit_fiscal','=', True)]}"/>
+
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

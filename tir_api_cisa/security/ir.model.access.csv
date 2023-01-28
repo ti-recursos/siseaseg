@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cisa,access_cisa,model_cisa,base.group_user,1,0,0,0
+access_cisa_payment,access_cisa_payment,model_cisa_payment,base.group_user,1,1,1,1
+access_cisa_payment_line,access_cisa_payment_line,model_cisa_payment_line,base.group_user,1,1,1,1

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--  -->
+        <record id="view_new_helpingdesk" model="ir.ui.view">
+            <field name="name">help.desk.inherit.form</field> 
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+
+            <xpath expr="//group[1]/field[2]" position="before">
+            <field name="consulta_type" class="oe_inline"/>
+            </xpath>
+
+            </field>
+        </record>   
+
+<!--  -->
+
+<!--  -->
+
+        <record id="views_form_helpingnew" model="ir.ui.view">
+            <field name="name">consult.form.inherit</field>
+            <field name="model">consult.type</field>
+            <field name="arch" type="xml">
+            <form string="Consulta automática">
+                <sheet>
+                <group>
+                <field name="name" class="oe_inline" groups="helpdesk.group_helpdesk_manager"/> 
+                </group>
+                <field name="relacionauno">
+                   <tree string="PyR" editable="bottom">
+                   <field name="preguntas"/> 
+                   <field name="respuestas"/> 
+                   </tree>
+                </field>
+
+                </sheet>
+                
+            </form>
+
+            </field>
+        </record>   
+
+<!--  -->
+
+<!--  -->
+        <record id="views_form_questioins" model="ir.ui.view">
+            <field name="name">consult.list.inherit</field>
+            <field name="model">questioins.answers</field>
+            <field name="arch" type="xml">
+
+            <tree>
+                <field name="name" invisible="1" groups="helpdesk.group_helpdesk_manager"/> 
+                <field name="preguntas"/> 
+                <field name="respuestas"/> 
+            </tree>
+
+
+            </field>
+        </record>  
+<!--  -->
+
+<!--  -->
+        <data>
+
+        <record id="consult_menu" model="ir.actions.act_window">
+		<field name="name">Tipos de Eventos</field> <!--nombre de menú modificable-->
+        <field name="type">ir.actions.act_window</field>
+		<field name="res_model">consult.type</field>
+		<field name="view_mode">tree,kanban,form</field>
+	    </record>
+
+        <record id="questions_menu" model="ir.actions.act_window">
+		<field name="name">Preguntas Admin</field>
+        <field name="type">ir.actions.act_window</field>
+		<field name="res_model">questioins.answers</field>
+		<field name="view_mode">tree,kanban,form</field>
+	    </record>
+
+        <!-- se cambia el name también -->
+        <menuitem id="menu_helpdesk_menuitem" name="Tipos de Eventos" action="consult_menu" parent="helpdesk.helpdesk_menu_config" sequence="100" groups="helpdesk.group_helpdesk_user,helpdesk.group_helpdesk_manager"/>  
+        <!-- menu de preguntas, vista no necesaria -->
+        <!-- <menuitem id="menu_helpdesk_menuitem2" name="Preguntas Admin" action="questions_menu" parent="helpdesk.helpdesk_menu_config" sequence="101" groups="helpdesk.group_helpdesk_user,helpdesk.group_helpdesk_manager"/> -->
+
+
+        </data>
+<!--  -->
+
+</odoo>
+
+
+       
+       

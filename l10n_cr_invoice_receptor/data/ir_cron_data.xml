@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record forcecreate="True" id="ir_cron_project_invoice" model="ir.cron">
+            <field name="name">FE: Crear documentos borrador</field>
+            <field name="model_id" ref="model_account_move_receptor" />
+            <field name="state">code</field>
+            <field name="code">model._create_documents()</field>
+            <field eval="True" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">5</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+    </data>
+</odoo>

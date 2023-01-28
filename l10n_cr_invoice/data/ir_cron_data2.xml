@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+        <record id="ir_cron_consultaestado" model="ir.cron">
+            <field name="name">Consulta Estado Servicio FE</field>
+            <field name="model_id" ref="model_res_company" />
+            <field name="state">code</field>
+            <field name="code">model.update_key()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+        <record id="ir_cron_sendreport" model="ir.cron">
+            <field name="name">Reporte: Documentos emitidos</field>
+            <field name="model_id" ref="model_res_company" />
+            <field name="state">code</field>
+            <field name="code">model.send_report()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">months</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False" />
+        </record>
+
+    </data>
+</odoo>

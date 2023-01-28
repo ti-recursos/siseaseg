@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="account_cxc_report_wizard" model="ir.ui.view" >
+            <field name="name">Antigüedad de saldos</field>
+            <field name="model">account.cxc.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Reporte Antigüedad de saldos">
+                    <group>
+                        <group>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="cxc_get_report" string="Generar - PDF" type="object" class="alert alert-danger rounded-pill text-center font-weight-bold shadow-sm" role="alert"/>
+                        <button name="print_project_report_xls" string="Generar - Excel" type="object" class="alert alert-success rounded-pill text-center font-weight-bold shadow-sm" role="alert"/>
+                        <button string="Cancelar" class="alert alert-info rounded-pill text-center font-weight-bold shadow-sm" role="alert" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_cxc_report_wizard"
+            name="Reporte Antigüedad de saldos"
+            res_model="account.cxc.report.wizard"
+            view_mode="form"
+            view_id="account_cxc_report_wizard"
+            target="new"/>
+
+        <menuitem action="action_cxc_report_wizard"
+                  name="Reporte Antigüedad de Saldos"
+            id="menu_cxc_report_wizard"
+            parent="account.account_reports_management_menu"/>
+    </data>
+</odoo>

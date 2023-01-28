@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template xml:space="preserve">
+    <t t-name="HomeMenu_extend" t-inherit="web_enterprise.HomeMenu" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('o_home_menu_scrollable')]" position="after">
+            <div>
+                <!-- <img src="/tir_sisea_custom/static/src/img/logo.png" style="width: 100%; max-width: 100px; height: auto;" alt="Logo"/> -->
+            </div>
+        </xpath>
+    </t>
+
+</template>

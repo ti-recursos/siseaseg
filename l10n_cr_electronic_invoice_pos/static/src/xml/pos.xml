@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+
+    <t t-name="UOMButton" owl="1">
+        <div class="button p-3 mb-2 bg-success text-white" t-if="env.pos.config.exclude_tax">
+            <span class="multi-uom-span">
+                EXCLUDE SERVICE TAX
+            </span>
+        </div>
+    </t>
+
+    <t t-name="MultiUomWidget" owl="1">
+        <div class="modal-dialog multi-uom">
+            <div class="popup popup-product-creation">
+                <p class="title">Are you sure you want to exclude the service tax?</p>
+                <div class="footer">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col">
+                            <div class="button" t-on-click="click_confirm">
+                                Accept
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="button" t-on-click="click_cancel">
+                                Cancel
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+</templates>

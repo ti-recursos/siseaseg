@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo noupdate="1">
+
+    <data >
+        <!--Email template -->
+        <record id="email_bank_charge" model="mail.template">
+            <field name="name">Automatic Charges: Send by email</field>
+            <field name="model_id" ref="model_automatic_charge"/>
+            <field name="subject"></field>
+            <field name="body_html" type="html">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h3 class="display-4">${object.sudo().company_id.name}</h3>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td><div class="col-8">CANTIDAD</div></td>
+                                    <td><div class="col-4">MONTO TOTAL</div></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><div class="col-8">${object.sudo().doc_quantity or '0'}</div></td>
+                                    <td><div class="col-4">${object.sudo().amount_total or '0.00'}</div></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </field>
+        </record>
+
+    </data>
+</odoo>

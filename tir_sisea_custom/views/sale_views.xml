@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <data>
+        <record id="sale.view_quotation_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="priority">4</field>
+            <field name="arch" type="xml">
+                <tree string="Quotation" class="o_sale_order" multi_edit="1" sample="1">
+                    <field name="name" string="Number" readonly="1" decoration-bf="1"/>
+                    <field name="create_date" string="Creation Date" widget="date" optional="show"/>
+                    <field name="commitment_date" widget="date" optional="hide"/>
+                    <field name="expected_date" widget="date" optional="hide"/>
+                    <field name="partner_id" readonly="1"/>
+                    <field name="user_id" widget="many2one_avatar_user" optional="show"/>
+                    <field name="activity_ids" widget="list_activity" optional="show"/>
+                    <field name="team_id" optional="hide"/>
+                    <field name="tag_ids" optional="hide" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                    <field name="company_id" groups="base.group_multi_company" optional="show" readonly="1"/>
+                    <field name="amount_untaxed" sum="Total Tax Excluded" widget="monetary" optional="hide"/>
+                    <field name="amount_tax" sum="Tax Total" widget="monetary" optional="hide"/>
+                    <field name="amount_total" sum="Total Tax Included" widget="monetary" decoration-bf="1" optional="show"/>
+                    <field name="state" decoration-success="state == 'sale' or state == 'done'" decoration-info="state == 'draft' or state == 'sent'" widget="badge" optional="show"/>
+                    <field name="invoice_status" optional="hide"/>
+                    <field name="message_needaction" invisible="1"/>
+                    <field name="currency_id" invisible="1"/>
+                    <field name="contract_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sale.view_sales_order_filter" model="ir.ui.view">
+            <field name="name">sale.order.list.select</field>
+            <field name="model">sale.order</field>
+            <field name="priority" eval="15"/>
+            <field name="arch" type="xml">
+                <search string="Search Sales Order">
+                    <field name="name" string="Order" filter_domain="['|', '|', ('name', 'ilike', self), ('client_order_ref', 'ilike', self), ('partner_id', 'child_of', self)]"/>
+                    <field name="partner_id" operator="child_of"/>
+                    <field name="contract_id" filter_domain="[('contract_id', '=', self)]"/>
+                    <field name="user_id"/>
+                    <field name="team_id" string="Sales Team"/>
+                    <field name="order_line" string="Product" filter_domain="[('order_line.product_id', 'ilike', self)]"/>
+                    <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                    <!-- We only allow to search on the following sale order line fields (product, name) because the other fields, such as price, quantity, ...
+                        will not be searched as often, and if they need to be searched it's usually in the context of products
+                        and then they can be searched from the page listing the sale order lines related to a product (from the product itself).
+                    -->
+                    <filter string="My Orders" domain="[('user_id', '=', uid)]" name="my_sale_orders_filter"/>
+                    <filter invisible="1" string="Late Activities" name="activities_overdue"
+                        domain="[('my_activity_date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                        help="Show all records which has next action date is before today"/>
+                    <filter invisible="1" string="Today Activities" name="activities_today"
+                        domain="[('my_activity_date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                    <filter invisible="1" string="Future Activities" name="activities_upcoming_all"
+                        domain="[('my_activity_date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Salesperson" name="salesperson" domain="[]" context="{'group_by': 'user_id'}"/>
+                        <filter name="customer" string="Customer" domain="[]" context="{'group_by': 'partner_id'}"/>
+                        <filter string="Order Date" name="order_month" domain="[]" context="{'group_by': 'date_order'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+        <record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button name="action_stock_move" string="Move Stock" type="object" class="oe_highlight" attrs="{'invisible':['|', ('processed','=',True), ('state', 'in', ['cancel','draft'])]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='partner_id']" position="before">
+                    <field name="contract_id"/>
+                </xpath>
+
+                <xpath expr="//field[@name='date_order']" position="after">
+                    <field name="picking_type_id" domain="[('code', '=', 'outgoing')]" required="1" />
+                    <field name="invoice_picking_id" readonly="1" attrs="{'invisible': [('invoice_picking_id', '=', False)]}"/>
+                    <field name="processed" invisible="1"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button type="object"
+                            name="action_view_picking" states="open,paid"
+                            class="oe_stat_button"
+                            attrs="{'invisible':['|',('state','=','draft'),('picking_count', '&lt;', 1)]}"
+                            icon="fa-truck">
+                        <field name="picking_count" string="Installation Products" widget="statinfo"/>
+                    </button>
+                </xpath>
+
+                <xpath expr="//page[1]" position="after">
+                <page string="Líneas de Instalación" name="lines">
+                    <div>
+                        <field name="installation_ids">
+                            <tree editable="bottom">
+                                <field name="product_id" domain="[('sale_ok', '=', True)]" context="{'default_recurring_invoice': True}"/>
+                                <field name="name" optional="show"/>
+                                <field name="quantity"/>
+                                <field name="product_uom_category_id" invisible="1"/>
+                                <field name="uom_id" string="UoM" groups="uom.group_uom" optional="show"/>
+                                <field name="price_unit" widget="monetary"/>
+                                <field name="discount" groups="product.group_discount_per_so_line" optional="show"/>
+                                <field name="price_subtotal" widget="monetary" groups="account.group_show_line_subtotals_tax_excluded"/>
+                                <field name="currency_id" invisible="1"/>
+                            </tree>
+                        </field>
+                    </div>
+                </page>
+            </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

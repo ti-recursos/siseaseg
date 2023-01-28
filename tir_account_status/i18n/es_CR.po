@@ -1,0 +1,203 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tir_account_status
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20210809\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-28 21:08+0000\n"
+"PO-Revision-Date: 2021-08-28 21:08+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "+90"
+msgstr ""
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "1-30"
+msgstr ""
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "31-60"
+msgstr ""
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "61-90"
+msgstr ""
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "<i><strong>Ending Balance</strong></i>"
+msgstr "<i><strong>Balance Final</strong></i>"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "<i><strong>Initial Balance</strong></i>"
+msgstr "<i><strong>Balance Inicial</strong></i>"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "<strong>Balance</strong>"
+msgstr ""
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Account"
+msgstr "Cuenta"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Balance"
+msgstr ""
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_wizard
+msgid "Cancell"
+msgstr "Cancelar"
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Credit"
+msgstr "Crédito"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Date"
+msgstr "Fecha"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Debit"
+msgstr "Débito"
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__display_name
+#: model:ir.model.fields,field_description:tir_account_status.field_report_tir_account_status_account_status_report_view__display_name
+msgid "Display Name"
+msgstr "Nombre para Mostrar"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Doc Number"
+msgstr "Número de Documento"
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__date_end
+msgid "End Date"
+msgstr "Fecha de Fin"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_wizard
+msgid "Generate - Excel"
+msgstr "Generar Excel"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_wizard
+msgid "Generate - PDF"
+msgstr "Generar PDF"
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__id
+#: model:ir.model.fields,field_description:tir_account_status.field_report_tir_account_status_account_status_report_view__id
+msgid "ID"
+msgstr ""
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard____last_update
+#: model:ir.model.fields,field_description:tir_account_status.field_report_tir_account_status_account_status_report_view____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Not Expired"
+msgstr "Sin Vencer"
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__partner_id
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Partner"
+msgstr "Socio de negocio"
+
+#. module: tir_account_status
+#: model:ir.actions.act_window,name:tir_account_status.action_status_report_wizard
+#: model:ir.actions.report,name:tir_account_status.account_status_report
+#: model:ir.ui.menu,name:tir_account_status.menu_status_report_wizard
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_wizard
+msgid "Partner Account Balance"
+msgstr "Balance de Cuenta de Socio"
+
+#. module: tir_account_status
+#: model:ir.model.fields,help:tir_account_status.field_account_status_report_wizard__partner_id
+msgid "Partner from which the report will be generated"
+msgstr "Socio a partir del cual se generará el informe"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Payable"
+msgstr "Por Pagar"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Receivable"
+msgstr "Por Cobrar"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Ref"
+msgstr ""
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Resume"
+msgstr "Resumen"
+
+#. module: tir_account_status
+#: model:ir.model.fields,field_description:tir_account_status.field_account_status_report_wizard__date_start
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+#. module: tir_account_status
+#: model_terms:ir.ui.view,arch_db:tir_account_status.account_status_report_view
+msgid "Total"
+msgstr ""
+
+#. module: tir_account_status
+#: model:ir.model,name:tir_account_status.model_account_status_report_wizard
+msgid "account.status.report.wizard"
+msgstr ""
+
+#. module: tir_account_status
+#: model:ir.model,name:tir_account_status.model_report_tir_account_status_account_status_report_view
+msgid "report.tir_account_status.account_status_report_view"
+msgstr ""

@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="account_move_receptor_search" model="ir.ui.view">
+        <field name="name">account.move.receptor.search</field>
+        <field name="model">account.move.receptor</field>
+        <field name="arch" type="xml">
+            <search string="Search Invoices">
+                <field name="tipo_documento"/>
+                <field name="n_documento"/>
+                <field name="n_clave"/>
+                <field name="date_issuance"/>
+                <field name="nif_emisor"/>
+                <field name="r_social_emisor"/>
+                <field name="n_comercial_emisor"/>
+
+                <field name="nif_receptor"/>
+                <field name="currency_id"/>
+                <field name="t_venta"/>
+                <field name="date_doc"/>
+
+                <field name="state_mr"/>
+                <field name="date_mr"/>
+                <field name="n_clave_mr"/>
+
+
+                <group expand="0" string="Group By">
+                    <filter string="Tipo de Documento" name="groupby_doctype" context="{'group_by':'tipo_documento'}"/>
+                    <filter string="Razón Social Emisor" name="groupby_emisor" context="{'group_by':'r_social_emisor'}"/>
+
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_receptor_historial" model="ir.actions.act_window">
+        <field name="name">Recepción de Documentos Electrónicos</field>
+        <field name="res_model">account.move.receptor</field>
+        <field name="search_view_id" ref="account_move_receptor_search"/>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <menuitem id="menu_account_move_receptor" name="Recepción de Documentos Electrónicos" parent="account.menu_finance_payables" sequence="300" groups="account.group_account_manager"/>
+    <menuitem id="menu_receptor_historial" name="Documentos Recibidos" action="action_receptor_historial" parent="menu_account_move_receptor" groups="account.group_account_manager"/>
+
+    <record id="receptor_view_tree" model="ir.ui.view">
+        <field name="name">account.move.receptor.view.tree</field>
+        <field name="model">account.move.receptor</field>
+        <field name="arch" type="xml">
+            <tree decoration-bf="state_mr == '3'" decoration-success="state_mr == '1'" decoration-danger="state_mr == '3'" decoration-warning="state_mr == '2'" default_order="date_issuance desc">
+                <field name="tipo_documento"/>
+                <field name="n_documento"/>
+                <field name="n_clave"/>
+                <field name="date_issuance"/>
+                <field name="nif_emisor"/>
+                <field name="r_social_emisor"/>
+                <field name="n_comercial_emisor" optional="hide"/>
+
+                <field name="nif_receptor" optional="hide"/>
+                <field name="currency_id"/>
+                <field name="t_venta"/>
+                <field name="date_doc"/>
+
+                <field name="state_mr"/>
+                <field name="date_mr" />
+                <field name="n_clave_mr" optional="hide"/>
+                <field name="imp_mr"/>
+                <field name="total_mr"/>
+                <field name="mensaje_hacienda" optional="hide"/>
+                <field name="state_doc_ref" optional="hide"/>
+
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="receptor_view_form" model="ir.ui.view">
+        <field name="name">account.move.receptor.view.form</field>
+        <field name="model">account.move.receptor</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="create_document_manual" type="object" string="Importar" style="background-color:#00A09D; color: white" attrs="{'invisible':['|',('documento_ref', '!=', False),('partner_id', '=', False)]}"></button>
+                    <button name="create_partner" type="object" string="Crear Socio de Negocio" style="background-color:#00A09D; color: white" attrs="{'invisible':[ ('partner_id', '!=', False)]}"></button>
+                 </header>
+                <sheet>
+                    <field name="name" invisible="1"/>
+                    <!-- Aceptado -->
+                    <widget name="web_ribbon" title="Aceptado" attrs="{'invisible':[('state_mr', '!=', '1')]}"/>
+                    <!-- Aceptado Parcialmente -->
+                    <widget name="web_ribbon" bg_color="bg-warning" title="Aceptado Parcialmente" attrs="{'invisible':[('state_mr', 'in', (False, '1', '3'))]}"/>
+                    <!-- Rechazado -->
+                    <widget name="web_ribbon" bg_color="bg-danger" title="Rechazado" attrs="{'invisible':[('state_mr', '!=', '3')]}"/>
+
+                    <div>
+                        <h5 class="font-weight-bold">Información de Documento Electrónico</h5>
+                         <group name="info_xml_group" col="2" >
+
+                            <field name="n_clave"/>
+                             <field name="n_documento"/>
+                            <field name="date_issuance"/>
+                            <field name="nif_emisor"/>
+                            <field name="r_social_emisor"/>
+                            <field name="partner_id" attrs="{'invisible':[('partner_id', '=', False)]}"/>
+                            <field name="state_doc_ref"/>
+                            <field name="documento_ref" attrs="{'invisible':[('documento_ref', '=', False)]}"/>
+
+                         </group>
+
+                        <notebook>
+                            <page string="Información de Documento Electrónico">
+                                <group name="xml_group" col="2" colspan="2">
+                                    <field name="name_xml" invisible="1" readonly="1"/>
+                                    <field name="xml" filename="name_xml"/>
+                                </group>
+                                <group name="info_xml_group" col="2" >
+                                    <field name="n_documento"/>
+                                    <field name="n_clave"/>
+                                    <field name="date_issuance"/>
+                                    <field name="nif_emisor"/>
+                                    <field name="r_social_emisor"/>
+                                    <field name="n_comercial_emisor"/>
+                                    <field name="nif_receptor"/>
+                                    <field name="currency_id"/>
+                                    <field name="t_venta"/>
+                                    <field name="date_doc"/>
+                                 </group>
+                            </page>
+                            <page string="Información de Respuesta de Hacienda">
+                                <group name="xml_mr_group" col="2" colspan="2">
+                                    <field name="name_mr" invisible="1" readonly="1"/>
+                                    <field name="xml_mr" filename="name_mr"/>
+                                </group>
+                                <group name="info_xml_mr_group" col="2" >
+                                    <field name="state_mr"/>
+                                    <field name="date_mr"/>
+                                    <field name="n_clave_mr"/>
+                                    <field name="imp_mr"/>
+                                    <field name="total_mr"/>
+                                    <field name="mensaje_hacienda"/>
+                                 </group>
+
+                            </page>
+                        </notebook>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+</odoo>

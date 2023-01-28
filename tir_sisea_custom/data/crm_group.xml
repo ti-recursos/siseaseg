@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_group_calificado" model="res.groups">
+        <field name="name">Puede mover oportunidades a Calificado en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="crm_group_propuesta" model="res.groups">
+        <field name="name">Puede mover oportunidades a Propuesta en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="crm_group_formalizacion" model="res.groups">
+        <field name="name">Puede mover oportunidades a Formalización en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="crm_group_valida_doc" model="res.groups">
+        <field name="name">Puede mover oportunidades a Valida Documentos en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="crm_group_cuenta_monitoreo" model="res.groups">
+        <field name="name">Puede mover oportunidades a Cuenta de Monitoreo en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="crm_group_coordinacion" model="res.groups">
+        <field name="name">Puede mover oportunidades a Coordinación en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="crm_group_instalacion" model="res.groups">
+        <field name="name">Puede mover oportunidades a Instalación en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="crm_group_valida_cuentas" model="res.groups">
+        <field name="name">Puede mover oportunidades a Validar Cuentas en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="crm_group_soporte" model="res.groups">
+        <field name="name">Puede mover oportunidades a Soporte en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="crm_group_conta" model="res.groups">
+        <field name="name">Puede mover oportunidades a Contabilidad en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+    <record id="crm_group_finalizado" model="res.groups">
+        <field name="name">Puede mover oportunidades a Finalizado en el CRM</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+</odoo>

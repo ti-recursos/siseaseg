@@ -1,0 +1,1 @@
+**Recepción de facturas electrónicas de compras (Proveedores). Incluye compras y movimientos de inventarios.** 

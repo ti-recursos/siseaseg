@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+
+    <data>
+        <record id="sale_subscription_view_search_inherit" model="ir.ui.view">
+            <field name="name">sale.subscription.search.inherit</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search[1]/field[6]" position="after">
+                    <field name="colaborator_gestor" on_change="onchange_amount_paid(colaborator_gestor)"/>
+                    <field name="costumer_condition"/>
+                </xpath>
+                <xpath expr="//filter[@name='contracts_not_assigned']" position="after">
+                    <separator/>
+                    <filter name="pendiente_de_validar" string="Pendiente de Validar" domain="[('pendiente_de_validar','=', True)]" help="Documentos que deben validarse debido a que tienen muchos documentos sin pagar"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="sale_subscription_view_form" model="ir.ui.view">
+            <field name="name">sale.subscription.form.view</field>
+            <field name="model">sale.subscription</field>
+            <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="object"
+                        name="action_open_helpdesk_ticket" context="{'default_partner_id': active_id}" icon="fa-life-ring" attrs="{'invisible': [('ticket_count', '=', 0)]}">
+                        <div class="o_stat_info">
+                            <field name="ticket_count" class="o_stat_value"/>
+                            <span class="o_stat_text"> Tickets</span>
+                        </div>
+                    </button>
+                </div>
+
+                <xpath expr="//field[@name='payment_token_id']" position="after">
+                    <field name="recurring_charges" widget="boolean_toggle"
+                           attrs="{'invisible': [('payment_mode', 'in', ['manual', 'draft_invoice', 'validate_send'])]}"
+                           options="{'no_create_edit': True}"/>
+                    <field name="credit_card"
+                           attrs="{'invisible': [('payment_mode', 'in', ['manual', 'draft_invoice', 'validate_send'])],'required':[('recurring_charges', '=', True)]}"
+                           options="{'no_create_edit': True}"
+                    />
+                    <field name="charges_date_doc"
+                           attrs="{'invisible': [('payment_mode', 'in', ['manual', 'draft_invoice', 'validate_send'])],'required':[('recurring_charges', '=', True)]}"
+
+                           options="{'no_create_edit': True}"/>
+                </xpath>
+
+
+                <xpath expr="//field[@name='code']" position="replace">
+                    <field name="code" string="Contract" attrs="{'required': [('id', '!=', False)]}"/>
+                    <field name="has_comments" invisible="1"/>
+                    <field name="pendiente_de_validar" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="partner_direction"/>
+                    <field name="supp" invisible="1"/>
+                </xpath>
+
+                <xpath expr="//sheet[1]/group[1]/group[2]/field[2]" position="after">
+                    <field name='has_subscription_perm' invisible="True"/>
+                    <field name="colaborator_gestor" attrs="{'readonly': [('has_subscription_perm', '!=', True)]}" required="True"/>
+                    <field name="costumer_condition" attrs="{'readonly': [('has_subscription_perm', '!=', True)]}" required="True"/>
+                </xpath>
+
+                <xpath expr="//header" position="inside">
+                    <button name="action_create_contact" class="btn-primary" type="object" string="Añadir Contacto"/>
+                    <button name="action_disable_validar" attrs="{'invisible': [('pendiente_de_validar', '=', False)]}" groups="sale_subscription.group_sale_subscription_manager" class="btn-primary" type="object" string="Suscripción Validada"/>
+                </xpath>
+
+                <xpath expr="//page[1]" position="after">
+
+                    <page string="Proceso CRM" attrs="{'invisible': [('has_comments', '=', False)]}">
+                        <group>
+                            <group>
+                                <field name="com_calificado" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="com_propuesta" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="com_formalizacion" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="com_valida_doc" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="com_cuenta_monitoreo" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="com_coordinacion" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="com_instalacion" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="com_valida_cuenta" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="com_soporte" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="com_conta" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="com_finalizado" readonly="1"/>
+                            </group>
+                            <group>
+
+                            </group>
+                        </group>
+                    </page>
+                    <page string="Validación de Contrato">
+                        <group>
+                            <group>
+                                <field name="f_contrato"/>
+                                <field name="f_instalacion"/>
+                                <field name="tecnico_instalador"/>
+
+                                <field name="img_placa_name" invisible="1"/>
+                                <field name="img_placa" filename="img_placa_name"/>
+                                <field name="gmaps" />
+                                <field name="contract_latitude" />
+                                <field name="contract_longitude" />
+                                <field name="resp_armada"/>
+                                <field name="cuen_SIS"/>
+                                <field name="contract_base"/>
+                                <field name="n_usuarios"/>
+                                <field name="n_contactos"/>
+                                <field name="p_claves"/>
+                                <field name="n_temp"/>
+                                <field name="auto_beep_mail"/>
+                                <field name="senna_recurrente"/>
+                                <field name="kit_alarma"/>
+                                <field name="proveedor_sim"/>
+                                <field name="app_serial"/>
+                                <field name="app_sim"/>
+                                <field name="gsm_number"/>
+                                <field name="recarga"/>
+
+                                <field name="notas_tec"/>
+                                <field name="notas_opera"/>
+                            </group>
+                            <group>
+                                <field name="telecom_number"/>
+                                <field name="tipo_panel"/>
+                                <field name="ubica_panel"/>
+                                <field name="tipo_teclado"/>
+                                <field name="ubica_teclado"/>
+                                <field name="ubica_sirena"/>
+                                <field name="llaves_rf"/>
+                                <field name="descrip_zonas"/>
+                                <field name="equipo_adicional"/>
+                                <field name="aperturas_app"/>
+                                <field name="cierre_total_parcial"/>
+                                <field name="coaccion"/>
+                                <field name="alarma_teclado"/>
+                                <field name="panel_sabotaje"/>
+                                <field name="alarma_zonas"/>
+                                <field name="kit_cctv"/>
+                                <field name="dominio"/>
+
+
+                                <field name="serie_dvr"/>
+                                <field name="ubica_dvr"/>
+                                <field name="enlace_compass"/>
+                            </group>
+                        </group>
+                        <field name="camaras_ids">
+                            <separator string="Cámaras Contrato"/>
+                            <tree editable="bottom">
+                                <field name="secuencia" widget="handle"/>
+                                <field name="serial_camara"/>
+                                <field name="ubicacion_camara"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="GSM Information" attrs="{'invisible': [('number_ids', '=', False)]}">
+                        <field name="number_ids" readonly="1"> 
+                            <tree string="GSM Module">
+                                <field name="name"/>
+                                <field name="partner_id" optional="hide"/>
+                                <field name="subscription_id" optional="hide"/>
+                                <field name="last_recharge" optional="show"/>
+                                <field name="next_recharge" optional="show"/>
+                                <field name="user_id_encargado" widget="many2one_avatar_user" optional="show"/>
+                                <field name="activity_ids" widget="list_activity" optional="hide"/>
+                                <field name="category_id" string="Proveedor" optional="show" widget="many2many_tags" options="{'color_field': 'color'}"/>
+                                <field name="company_id" invisible="1"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="number_balance"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Contactos" attrs="{'invisible': [('supp', '=', False)]}">
+                        <field name="supp_ids"> 
+                            <tree string="GSM Module" editable="bottom">
+                                <field name="secuencia" widget="handle"/>
+                                <field name="sub_id" invisible="1"/>
+                                <field name="parent_id" invisible="1"/>
+                                <field name="partner_id" domain="[('parent_id', '=?', parent_id)]"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,60 @@
+# -*- coding: utf-8 -*-
+
+{
+    'name': "Personalizaciones TIR para SISEA",
+    'version': '14.0.1.0',
+    'author': "Norlan Ruiz - TI Recursos S.A.",
+    'category': 'Personalizaciones',
+    'description': """
+    Personalizaciones TIR para Seteo
+    """,
+    'depends': [
+        'contacts',
+        'base',
+        'mail',
+        'sale_management',
+        'sale_subscription',
+        'helpdesk',
+        'tir_subscription_manager',
+        'tir_api_cisa',
+        'l10n_cr_invoice',
+        'crm',
+        'stock'
+    ],
+    'data': [
+        'security/group_users.xml',
+        'security/ir.model.access.csv',
+        'data/helpdesk_team.xml',
+        'data/ir_cron_data.xml',
+        'data/ir_cron_data_2.xml',
+        'data/mail_template_bank.xml',
+        'data/crm_stage_data.xml',
+        'data/crm_group.xml',
+        'data/subscription_templates.xml',
+        'views/res_partner.xml',
+        'views/res_partner_credit_cards.xml',
+        'views/res_company.xml',
+        'views/ir_mail_server.xml',
+        'views/sale_subscriptions.xml',
+        'views/automatic_charge.xml',
+        'views/automatic_charge_bank.xml',
+        'views/fetchmail.xml',
+        'views/crm_lead_views.xml',
+        'views/crm_stage_views.xml',
+        'views/sale_views.xml',
+        'views/sale_report_templates.xml',
+        'views/subscription_portal_templates.xml',
+        'views/stock_picking.xml',
+        'views/account.xml',
+        'views/account_payment.xml',
+        'views/helpdesk_view.xml',
+        'views/helpdesk_portal_templates.xml',
+        'views/account_move.xml',
+        'views/sale_subscription_recharge.xml',
+        'wizard/charge_line_change_date.xml',
+        
+    ],
+    "qweb": [
+        'static/src/xml/base.xml',
+    ],
+}

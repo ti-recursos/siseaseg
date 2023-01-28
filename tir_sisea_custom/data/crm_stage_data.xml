@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Allow updating on noupdate=True records -->
+    <function name="write" model="ir.model.data">
+        <function name="search" model="ir.model.data">
+            <value
+                eval="[('module', '=', 'crm'), ('name', 'in', ['stage_lead1', 'stage_lead2', 'stage_lead3', 'stage_lead4'])]" />
+        </function>
+        <value eval="{'noupdate': False}" />
+    </function>
+
+    <record model="crm.stage" id="crm.stage_lead1">
+        <field name="name">New</field>
+        <field name="is_won">False</field>
+        <field name="sequence">1</field>
+    </record>
+    <record model="crm.stage" id="crm.stage_lead2">
+        <field name="name">Qualified</field>
+        <field name="is_won">False</field>
+        <field name="sequence">2</field>
+        <field name="calificado">True</field>
+    </record>
+    <record model="crm.stage" id="crm.stage_lead3">
+        <field name="name">Proposal</field>
+        <field name="is_won">False</field>
+        <field name="sequence">3</field>
+        <field name="propuesta">True</field>
+    </record>
+    <record model="crm.stage" id="crm.stage_lead4">
+        <field name="name">Formalization</field>
+        <field name="is_won">False</field>
+        <field name="sequence">4</field>
+        <field name="formalizacion">True</field>
+    </record>
+
+    <!-- Revoke noupdate change -->
+    <function name="write" model="ir.model.data">
+        <function name="search" model="ir.model.data">
+            <value
+                eval="[('module', '=', 'crm'), ('name', 'in', ['stage_lead1', 'stage_lead2', 'stage_lead3', 'stage_lead4'])]" />
+        </function>
+        <value eval="{'noupdate': True}" />
+    </function>
+
+    <record model="crm.stage" id="stage_lead5">
+        <field name="name">Validation of Documents</field>
+        <field name="is_won">False</field>
+        <field name="sequence">5</field>
+        <field name="valida_doc">True</field>
+    </record>
+    <record model="crm.stage" id="stage_lead12">
+        <field name="name">Monitoring account</field>
+        <field name="is_won">False</field>
+        <field name="sequence">6</field>
+        <field name="cuenta_monitoreo">True</field>
+    </record>
+    <record model="crm.stage" id="stage_lead6">
+        <field name="name">Coordination</field>
+        <field name="is_won">False</field>
+        <field name="sequence">7</field>
+        <field name="coordinacion">True</field>
+    </record>
+    <record model="crm.stage" id="stage_lead7">
+        <field name="name">Installation </field>
+        <field name="is_won">False</field>
+        <field name="sequence">8</field>
+        <field name="instalacion">True</field>
+    </record>
+    <record model="crm.stage" id="stage_lead8">
+        <field name="name">Validate Accounts</field>
+        <field name="is_won">False</field>
+        <field name="sequence">9</field>
+        <field name="valida_cuenta">True</field>
+    </record>
+    <record model="crm.stage" id="stage_lead9">
+        <field name="name">Support</field>
+        <field name="is_won">False</field>
+        <field name="sequence">10</field>
+        <field name="soporte">True</field>
+    </record>
+    <record model="crm.stage" id="stage_lead10">
+        <field name="name">Accounting</field>
+        <field name="is_won">False</field>
+        <field name="sequence">11</field>
+        <field name="conta">True</field>
+    </record>
+    <record model="crm.stage" id="stage_lead11">
+        <field name="name">Finalized</field>
+        <field name="is_won">False</field>
+        <field name="sequence">12</field>
+        <field name="fold">True</field>
+        <field name="finalizado">True</field>
+    </record>
+
+</odoo>

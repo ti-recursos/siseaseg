@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data noupdate="1">
+        <!-- FACTURA EN FIRME -->
+        <record id="fact_firm" model="sale.subscription.template">
+            <field name="name">Factura en Firme</field>
+            <field name="code">FF</field>
+            <field name="active">True</field>
+            <field name="recurring_interval">1</field>
+            <field name="recurring_rule_type">monthly</field>
+            <field name="recurring_rule_boundary">unlimited</field>
+            <field name="payment_mode">validate_send</field>
+        </record>
+
+        <!-- FACTURA EN FIRME CON CARGO AUTOMÁTICO -->
+        <record id="fact_firm_carg" model="sale.subscription.template">
+            <field name="name">Factura Firme Cargo Automático</field>
+            <field name="code">FFC</field>
+            <field name="active">True</field>
+            <field name="recurring_interval">1</field>
+            <field name="recurring_rule_type">monthly</field>
+            <field name="recurring_rule_boundary">unlimited</field>
+            <field name="payment_mode">validate_send_payment</field>
+        </record>
+
+        <!-- FACTURA BORRADOR -->
+        <record id="fact_borrador" model="sale.subscription.template">
+            <field name="name">Factura Borrador</field>
+            <field name="code">FB</field>
+            <field name="active">True</field>
+            <field name="recurring_interval">1</field>
+            <field name="recurring_rule_type">monthly</field>
+            <field name="recurring_rule_boundary">unlimited</field>
+            <field name="payment_mode">draft_invoice</field>
+        </record>
+
+    </data>
+</odoo>

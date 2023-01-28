@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+    <data>
+        <record id="account_status_report_wizard" model="ir.ui.view" >
+            <field name="name">Partner Account Balance</field>
+            <field name="model">account.status.report.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Partner Account Balance">
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="draft_docs" />
+                        </group>
+                    </group>
+                    <footer>
+                        <button name="cxc_get_report" string="Generate - PDF" type="object" class="alert alert-danger rounded-pill text-center font-weight-bold shadow-sm" role="alert"/>
+                        <button name="print_project_report_xls" string="Generate - Excel" type="object" class="alert alert-success rounded-pill text-center font-weight-bold shadow-sm" role="alert"/>
+                        <button string="Cancell" class="alert alert-info rounded-pill text-center font-weight-bold shadow-sm" role="alert" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_status_report_wizard"
+            name="Partner Account Balance"
+            res_model="account.status.report.wizard"
+            view_mode="form"
+            view_id="account_status_report_wizard"
+            target="new"/>
+
+        <menuitem action="action_status_report_wizard"
+                  name="Partner Account Balance"
+            id="menu_status_report_wizard"
+            parent="account.account_reports_management_menu"/>
+    </data>
+</odoo>

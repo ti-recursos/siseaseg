@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <template id="project_report_template">
+         <t t-call="web.html_container">
+
+              <t t-call="web.external_layout">
+                <div class="page" >
+                    <h2>REPORTE RESUMEN - FACTURACIÓN</h2>
+                    <!-- DETALLE -->
+                    <table class="table table-condensed table-bordered" style="font-size: 14px;">
+                        <thead>
+
+                            <th >Origen</th>
+                            <th >Fecha</th>
+                            <th>Cliente</th>
+                            <th>Documento</th>
+                            <th>Bruto</th>
+                            <th>Total Impuestos</th>
+                            <th>Descuento</th>
+                            <th>Total</th>
+                            <th>Doc. Elect.</th>
+                            <th>Estado FE</th>
+                            <th>Pagos</th>
+
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="doc">
+                                <tr>
+                                    <td><span t-esc="doc['origen']"/></td>
+                                    <td><span t-esc="doc['date']"/></td>
+                                    <td><span t-esc="doc['partner_id']"/></td>
+                                    <td><span t-esc="doc['invoice_name']"/></td>
+                                    <td><span t-esc="doc['neto']"/></td>
+                                    <td><span t-esc="doc['amount_tax_signed']"/></td>
+                                    <td><span t-esc="doc['descuento']"/></td>
+                                    <td><span t-esc="doc['amount_total_signed']"/></td>
+                                    <td><span t-esc="doc['tipo_documento']"/></td>
+
+                                    <td><span t-esc="doc['state_tributacion']"/></td>
+                                    <td><span t-esc="doc['payment_state']"/></td>
+
+                                </tr>
+
+                            </t>
+
+                        </tbody>
+                    </table>
+
+                </div>
+              </t>
+            </t>
+     </template>
+</odoo>

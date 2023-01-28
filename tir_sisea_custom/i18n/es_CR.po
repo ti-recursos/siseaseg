@@ -1,0 +1,2679 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* tir_sisea_custom
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e-20220520\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-16 15:58+0000\n"
+"PO-Revision-Date: 2022-08-16 15:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid " E-mail sent to customer."
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__n_contactos
+msgid "# Contactos"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__n_usuarios
+msgid "# Usuarios"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__has_subscription_perm
+msgid "#Permiso"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:mail.template,subject:tir_sisea_custom.email_bank_charge
+msgid "0020060640"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.cards_form_view
+msgid "10/2021 (Month/Year)"
+msgstr "10/2021 (Mes/Año)"
+
+#. module: tir_sisea_custom
+#: model:mail.template,body_html:tir_sisea_custom.email_bank_charge
+msgid ""
+"<div class=\"jumbotron jumbotron-fluid\">\n"
+"                    <div class=\"container\">\n"
+"                        <h3 class=\"display-4\">${object.sudo().company_id.name}</h3>\n"
+"\n"
+"                        <table>\n"
+"                            <thead>\n"
+"                                <tr>\n"
+"                                    <td><div class=\"col-8\">QUANTITY</div></td>\n"
+"                                    <td><div class=\"col-4\">AMOUNT TOTAL</div></td>\n"
+"                                </tr>\n"
+"                            </thead>\n"
+"                            <tbody>\n"
+"                                <tr>\n"
+"                                    <td><div class=\"col-8\">${object.sudo().doc_quantity or '0'}</div></td>\n"
+"                                    <td><div class=\"col-4\">${object.sudo().amount_total or '0.00'}</div></td>\n"
+"                                </tr>\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </div>\n"
+"                </div>\n"
+"            "
+msgstr ""
+"<div class=\"jumbotron jumbotron-fluid\" style=\"border-radius:0px;padding:2rem 0px 2rem 0px;margin:0 0 2rem 0;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;background-color:rgb(233, 236, 239);\">\n"
+"                    <div class=\"container\" style=\"padding:0 16px 0 16px;margin:0 auto 0 auto;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;width:100%;\">\n"
+"                        <h4 class=\"display-5\" style=\"margin:0px 0 0.5rem 0;font-size:1.3rem;color:rgb(33, 37, 41);line-height:1.2;font-weight:400;\">${object.sudo().company_id.name}</h4>\n"
+"                        <div class=\"container\" style=\"padding:0 16px 0 16px;margin:0 auto 0 auto;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;width:100%;\">\n"
+"                            <div class=\"row p-3 mb-2 bg-warning text-white\" style=\"padding:1rem;margin:0 -16px 0.5rem -16px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;background-color:rgb(240, 173, 78);color:rgb(255, 255, 255);flex-wrap:wrap;display:flex;\">\n"
+"                                <div class=\"col-8\" style=\"padding:0 16px 0 16px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;max-width:66.6667%;flex-basis:66.6667%;flex-shrink:0;flex-grow:0;width:100%;position:relative;\">CANTIDAD</div>\n"
+"                                <div class=\"col-4\" style=\"padding:0 16px 0 16px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;max-width:33.3333%;flex-basis:33.3333%;flex-shrink:0;flex-grow:0;width:100%;position:relative;\">MONTO TOTAL</div>\n"
+"                            </div>\n"
+"                            <div class=\"row  p-3 mb-2 bg-light text-dark\" style=\"padding:1rem;margin:0 -16px 0.5rem -16px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;background-color:rgb(248, 249, 250);color:rgb(52, 58, 64);flex-wrap:wrap;display:flex;\">\n"
+"                                <div class=\"col-8\" style=\"padding:0 16px 0 16px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;max-width:66.6667%;flex-basis:66.6667%;flex-shrink:0;flex-grow:0;width:100%;position:relative;\">${object.sudo().doc_quantity or '0'}</div>\n"
+"                                <div class=\"col-4\" style=\"padding:0 16px 0 16px;font-size:13px;font-family:&quot;Lucida Grande&quot;, Helvetica, Verdana, Arial, sans-serif;max-width:33.3333%;flex-basis:33.3333%;flex-shrink:0;flex-grow:0;width:100%;position:relative;\">${object.sudo().amount_total or '0.00'}</div>\n"
+"                            </div>\n"
+"                        </div>\n"
+"                    </div>\n"
+"                </div>"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_subscriptions
+msgid ""
+"<span class=\"badge badge-pill badge-danger\"><i class=\"fa fa-fw fa-"
+"remove\"/> Closed</span>"
+msgstr ""
+"<span class=\"badge badge-pill badge-danger\"><i class=\"fa fa-fw fa-"
+"remove\"/> Cerrado</span>"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_subscriptions
+msgid ""
+"<span class=\"badge badge-pill badge-success\"><i class=\"fa fa-fw fa-"
+"check\"/> In Progress</span>"
+msgstr ""
+"<span class=\"badge badge-pill badge-success\"><i class=\"fa fa-fw fa-"
+"check\"/> En Progreso</span>"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_subscriptions
+msgid ""
+"<span class=\"badge badge-pill badge-warning\"><i class=\"fa fa-fw fa-"
+"refresh\"/> To Renew</span>"
+msgstr ""
+"<span class=\"badge badge-pill badge-warning\"><i class=\"fa fa-fw fa-"
+"refresh\"/> A Renovar</span>"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.helpdesk_ticket_view_form
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "<span class=\"o_stat_text\"> Tickets</span>"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.report_saleorder_document
+msgid "<span>Cliente</span>"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.crm_iap_opportunity_kanban
+msgid "<strong>Contract: </strong>"
+msgstr "<strong>Contrato: </strong>"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.helpdesk_ticket_view_form
+msgid "<strong>Total Unpaid Documents</strong>"
+msgstr "<strong>Total Documentos no pagados</strong>"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/automatic_charge.py:0
+#, python-format
+msgid "<ul><li><p>Factura:  &#8594; </p></li></ul>"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/automatic_charge.py:0
+#, python-format
+msgid ""
+"<ul><li><p>Factura:  &#8594; </p></li><li><p>Monto:  &#8594; </p></li></ul>"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge__state__3
+msgid "ACEPTADO"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_account_move
+msgid "Account"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:crm.stage,name:tir_sisea_custom.stage_lead10
+#: model:helpdesk.team,name:tir_sisea_custom.team_accounting
+msgid "Accounting"
+msgstr "Contabilidad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_needaction
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_needaction
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_needaction
+msgid "Action Needed"
+msgstr "Accion necesaria"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_ids
+msgid "Activities"
+msgstr "Actividades"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_exception_decoration
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_exception_decoration
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Decoración de excepción de actividad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_state
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_state
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_state
+msgid "Activity State"
+msgstr "Estao de Actividad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_type_icon
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_type_icon
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Icono de tipo de actividad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__additional_info
+msgid "Additional Information"
+msgstr "Información Adicional"
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.sisea_group_admin
+msgid "Admin"
+msgstr "Administrador"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_company__nr_afiliado
+msgid "Affiliate Number"
+msgstr "Numero de Afiliado"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_recharge_filter
+msgid "Agrupar por"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_change_view
+msgid "Ajustes Cargos Automáticos"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__alarma_teclado
+msgid "Alarmas Teclado Medical Incendio"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__alarma_zonas
+msgid "Alarmas Zonas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.module.category,description:tir_sisea_custom.sisea_category
+msgid "Allow to edit  fields in SISEA's  modules"
+msgstr "Gestionar la información de los socios"
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.subscription_category
+msgid "Allow to modify gestor and costumer condition in suscription"
+msgstr ""
+"Habilita modificar el gestor y la condición del cliente en el módulo de "
+"suscripciones"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__amount_total
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__amount_total
+msgid "Amount Total"
+msgstr "Monto Total"
+
+#. module: tir_sisea_custom
+#: model:helpdesk.team,name:tir_sisea_custom.team_analysis
+msgid "Analysis and closure"
+msgstr "Análisis y Cierre"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__aperturas_app
+msgid "Aperturas, cierres, llaves, App Sisea"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__app_sim
+msgid "App Sisea SIM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__app_serial
+msgid "App Sisea Serial"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__file_data
+msgid "Archivo"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__user_id_encargado
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__recharge_user_id
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_recharge_filter
+msgid "Assigned User"
+msgstr "Usuario Asignado"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__name
+msgid "Asunto"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_attachment_count
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_attachment_count
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_attachment_count
+msgid "Attachment Count"
+msgstr "Recuento de archivos adjuntos"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__n_autorizacion
+msgid "Authorization Number"
+msgstr "Numero de autorización"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__auto_beep_mail
+msgid "Auto Beeper / Correo"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_automatic_charge
+msgid "Automatic Charge"
+msgstr "Cargo Automático"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_automatic_charge_line
+msgid "Automatic Charge Line"
+msgstr "Detalle de Cargos Automático"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_automatic_charge_bank
+msgid "Automatic Charge Receptor"
+msgstr "Receptor de Cargos Automáticos"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_automatic_charge_bank_line
+msgid "Automatic Charge Receptor Line"
+msgstr "Detalle de Receptor de Cargos Automáticos"
+
+#. module: tir_sisea_custom
+#: model:ir.ui.menu,name:tir_sisea_custom.cards_root_menu
+msgid "Automatic Charges"
+msgstr "Cargos Automáticos"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__charges_date_doc
+msgid "Automatic Charges Date"
+msgstr "Fecha de Cargos Automáticos"
+
+#. module: tir_sisea_custom
+#: model:ir.actions.act_window,name:tir_sisea_custom.charge_line_action_model
+#: model:ir.ui.menu,name:tir_sisea_custom.charge_line_connector
+msgid "Automatic Charges Detail"
+msgstr "Detalle de cargos automáticos"
+
+#. module: tir_sisea_custom
+#: model:ir.actions.server,name:tir_sisea_custom.ir_cron_lock_cards_ir_actions_server
+#: model:ir.cron,cron_name:tir_sisea_custom.ir_cron_lock_cards
+#: model:ir.cron,name:tir_sisea_custom.ir_cron_lock_cards
+msgid "Automatic Charges: Lock Cards"
+msgstr "Cargos automáticos: Bloqueo de Tarjetas"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid ""
+"Automatic payment failed after multiple attempts. Subscription closed "
+"automatically."
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid "Automatic payment failed. Subscription set to \"To Renew\"."
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid ""
+"Automatic payment succeeded. Payment reference: <a href=# data-oe-"
+"model=payment.transaction data-oe-id=%d>%s</a>; Amount: %s. Invoice <a "
+"href=# data-oe-model=account.move data-oe-id=%d>View Invoice</a>."
+msgstr ""
+"El pago automático se realizó correctamente. Referencia de pago: <a href=# "
+"data-oe-model=payment.transaction data-oe-id=%d>%s</a>; Monto: %s. Factura "
+"<a href=# data-oe-model=account.move data-oe-id=%d>Ver Factura</a>."
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "Añadir Contacto"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__number_balance
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__balance
+msgid "Balance"
+msgstr "Saldo"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__bank_charge_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__bank_answer
+msgid "Bank Answer"
+msgstr "Respuesta del Banco"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__bank_charge_ids
+msgid "Bank Answer Files"
+msgstr "Archivos de Respuesta del Banco"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_bank_form_view
+msgid "Bank Files"
+msgstr "Archivos del Banco"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_ir_mail_server__bank_receiver
+msgid "Bank Receiver Mail"
+msgstr "Correo del destinatario del banco"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_email_server_form
+msgid "Bank Receptor"
+msgstr "Receptor del Banco"
+
+#. module: tir_sisea_custom
+#: model:ir.actions.act_window,name:tir_sisea_custom.charge_bank_action_model
+#: model:ir.ui.menu,name:tir_sisea_custom.charge_bank_connector
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_bank_tree_view
+msgid "Bank Receptor History"
+msgstr "Historial del receptor bancario"
+
+#. module: tir_sisea_custom
+#: model:helpdesk.stage,legend_blocked:tir_sisea_custom.stage_cancelled
+#: model:helpdesk.stage,legend_blocked:tir_sisea_custom.stage_in_progress
+#: model:helpdesk.stage,legend_blocked:tir_sisea_custom.stage_new
+#: model:helpdesk.stage,legend_blocked:tir_sisea_custom.stage_solved
+msgid "Bloqueada"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+msgid "Buscar Cargos Automáticos"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_crm_stage
+msgid "CRM Stages"
+msgstr "Etapas del CRM"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_calificado
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_calificado
+msgid "Calificado"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__camaras_ids
+msgid "Camaras"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_sale_subscription_camaras_line
+#: model:ir.model,name:tir_sisea_custom.model_sale_subscription_number_line
+msgid "Camaras Contrato"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_change_view
+msgid "Cambiar Fecha"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line_change__process
+msgid ""
+"Cambiar Fecha inclusive a los documentos que ya fueron enviados al banco "
+"(esto sirve por si el banco procesó los cargos otro día)"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_change_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge_line__payment_state__cancel
+msgid "Cancelado"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:helpdesk.stage,name:tir_sisea_custom.stage_cancelled
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.cards_form_view
+msgid "Card number consisting of 16 digits"
+msgstr "Número de tarjeta que consta de 16 dígitos"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__account_payment__payment_method__automatic_charge
+msgid "Cargo Automático"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__product_uom_category_id
+msgid "Category"
+msgstr "Categoria"
+
+#. module: tir_sisea_custom
+#: model:ir.actions.act_window,name:tir_sisea_custom.action_charge_line_change
+msgid "Change Date"
+msgstr "Cambiar Fecha"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_automatic_charge_line_change
+msgid "Change Date Automatic Charges"
+msgstr "Cambiar Fecha de Cargos Automáticos"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__file
+msgid "Charge Document"
+msgstr "Documento de Cargo"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__name_file
+msgid "Charge Document Name"
+msgstr "Nombre del Documento de Cargo"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_bank_form_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_form_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_tree_view
+msgid "Charge Information"
+msgstr "Información de cargo"
+
+#. module: tir_sisea_custom
+#: model:ir.actions.act_window,name:tir_sisea_custom.charge_bank_line_action_model
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_bank_line_form_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_bank_line_tree_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_form_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_tree_view
+msgid "Charge Line Information"
+msgstr "Información de la línea de cargo"
+
+#. module: tir_sisea_custom
+#: model:ir.ui.menu,name:tir_sisea_custom.charge_connector_menu
+msgid "Charges Information"
+msgstr "Información de Cargos"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__child_ids
+msgid "Child Tags"
+msgstr "Etiquetas secundarias"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__cierre_total_parcial
+msgid "Cierres Total - Parcial"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__costumer_condition
+msgid "Client condition"
+msgstr "Condición del cliente"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__partner_id
+msgid "Cliente de Factura"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__coaccion
+msgid "Coacción"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__color
+msgid "Color Index"
+msgstr "Indice de Color"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__comentario_gestion
+msgid "Comentario Gestión"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.crm_lead_view_form
+msgid "Comentarios"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__company_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__company_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__company_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__company_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__company_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__company_id
+msgid "Company"
+msgstr "Compañia"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__currency_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__currency_id
+msgid "Company Currency"
+msgstr "Moneda de Compañia"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_res_company
+msgid "Company Information"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__sale_subscription_number_line__tipo_operacion__consulta
+msgid "Consulta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_conta
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_conta
+msgid "Contabilidad"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__partner_id
+msgid "Contacto"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__reporte_id
+msgid "Contacto que Reporta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "Contactos"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__contract
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order__contract_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_stock_picking__contract
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_res_partner_inherit
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_payment__contract
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+msgid "Contrato"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__contract_base
+msgid "Contrato Base"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_order_installation__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
+msgstr ""
+"La conversión entre las unidades de medidas sólo pueden ocurrir si "
+"pertenecen a la misma categoría. La conversión se basará en los ratios "
+"establecidos."
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.crm_lead_view_form
+msgid "Convert to Opportunity"
+msgstr "Convertir en Oportunidad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_coordinacion
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_coordinacion
+msgid "Coordinacion"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:crm.stage,name:tir_sisea_custom.stage_lead6
+#: model:helpdesk.team,name:tir_sisea_custom.team_coordination
+msgid "Coordination"
+msgstr "Coordinación"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__correo_reporte
+msgid "Correo electrónico"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order__picking_count
+msgid "Count"
+msgstr "Contar"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__create_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__create_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__credit_card
+msgid "Credit Card"
+msgstr "Tarjeta de Crédito"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__view_n_card
+msgid "Credit Card Number"
+msgstr "Número de Tarjeta de Crédito"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__n_card
+msgid "Credit Card Number Secure"
+msgstr "Número de Tarjeta de Crédito"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_cuenta_monitoreo
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_cuenta_monitoreo
+msgid "Cuenta Monitoreo"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__cuen_SIS
+msgid "Cuenta SIS"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__currency_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__currency_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__currency_id
+msgid "Currency"
+msgstr "Moneda"
+
+#. module: tir_sisea_custom
+#: model:ir.actions.act_window,name:tir_sisea_custom.cards_action_model
+#: model:ir.actions.act_window,name:tir_sisea_custom.recharge_action_model
+#: model:ir.ui.menu,name:tir_sisea_custom.cards_connector_menu
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.cards_form_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.cards_tree_view
+msgid "Customer Information"
+msgstr "Información de Cliente"
+
+#. module: tir_sisea_custom
+#: model:helpdesk.team,name:tir_sisea_custom.helpdesk_team1
+msgid "Customer service"
+msgstr "Servicio al Cliente"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "Cámaras Contrato"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__serie_dvr
+msgid "DVR serial"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__sale_subscription__costumer_condition__dxmoroso
+msgid "DX Moroso"
+msgstr "DX Moroso"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__sale_subscription__costumer_condition__dxx2
+msgid "DX X2"
+msgstr "DX X2"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__date_doc
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__date_doc
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__date_doc
+msgid "Date"
+msgstr "Fecha"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__view_date_due
+msgid "Date Due"
+msgstr "Fecha de Vencimiento"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__date_due
+msgid "Date Due Secure"
+msgstr "Fecha de Vencimiento"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__descrip_zonas
+msgid "Descripcion de zonas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__description
+msgid "Descripción"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__name
+msgid "Description"
+msgstr "Descripción"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__partner_direction
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__partner_direction
+msgid "Dirección"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__discount
+msgid "Discount (%)"
+msgstr "Descuento (%)"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_payment__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_fetchmail_server__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_ir_mail_server__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_mail_thread__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_company__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__display_name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_stock_picking__display_name
+msgid "Display Name"
+msgstr "Mostrar nombre"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__move_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__model_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__camara_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__number_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__sub_id
+msgid "Documento"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#: code:addons/tir_sisea_custom/wizard/charge_line_change_date.py:0
+#, python-format
+msgid "Documento: # no se pudo aplicar el cargo automático"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_search_inherit
+msgid ""
+"Documentos que deben validarse debido a que tienen muchos documentos sin "
+"pagar"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__dominio
+msgid "Dominio"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge__state__2
+msgid "EN PROCESO"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge__state__1
+msgid "ENVIADO"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/credit_card_partner.py:0
+#, python-format
+msgid ""
+"El usuario <a href=# data-oe-model=res.users data-oe-id=%d>%s</a> ha "
+"<strong>bloqueado</strong> la información de la tarjeta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/credit_card_partner.py:0
+#, python-format
+msgid ""
+"El usuario <a href=# data-oe-model=res.users data-oe-id=%d>%s</a> ha "
+"<strong>desbloqueado</strong> la información de la tarjeta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/helpdesk.py:0
+#, python-format
+msgid ""
+"El usuario: <a href=# data-oe-model=res.users data-oe-id=%d>%s</a> pasó el "
+"ticket de <strong>%s</strong> a <strong>%s</strong> <br/> El cliente tiene "
+"%s documentos pendientes"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_mail_thread
+msgid "Email Thread"
+msgstr "Hilo de mensajes"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.ir_mail_server_form
+msgid "Emisión Documentos de Banco"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+msgid "En proceso"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:helpdesk.stage,legend_normal:tir_sisea_custom.stage_cancelled
+#: model:helpdesk.stage,legend_normal:tir_sisea_custom.stage_in_progress
+#: model:helpdesk.stage,legend_normal:tir_sisea_custom.stage_new
+#: model:helpdesk.stage,legend_normal:tir_sisea_custom.stage_solved
+msgid "En progreso"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__gestion_user_id
+msgid "Encargado de Gestión"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__enlace_compass
+msgid "Enlace Compass"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__equipo_adicional
+msgid "Equipos adicionales"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+msgid "Estado de pago"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/helpdesk.py:0
+#, python-format
+msgid "Este ticket debe ser asignado a contabilidad"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_change_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.recharge_form_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+msgid "Fecha"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change__date
+msgid "Fecha Nueva"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__fecha_gestion
+msgid "Fecha de Gestión"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__f_instalacion
+msgid "Fecha de instalación"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__f_contrato
+msgid "Fecha del contrato"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.ui.menu,name:tir_sisea_custom.charge_connector
+msgid "Files Sent to Bank "
+msgstr "Archivos Enviados al Banco"
+
+#. module: tir_sisea_custom
+#: model:ir.actions.act_window,name:tir_sisea_custom.charge_action_model
+msgid "Files Sent to Bank Detail"
+msgstr "Detalle de Archivos Enviados al Banco"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_finalizado
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_finalizado
+msgid "Finalización"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:crm.stage,name:tir_sisea_custom.stage_lead11
+msgid "Finalized"
+msgstr "Finalizado"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_follower_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_follower_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_follower_ids
+msgid "Followers"
+msgstr "Seguidores"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_channel_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_channel_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Seguidores (Canales)"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_partner_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_partner_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Seguidores (Clientes)"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__activity_type_icon
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__activity_type_icon
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Icono de Font Awesome ej. fa-tasks"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_formalizacion
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_formalizacion
+msgid "Formalizacion"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__img_placa
+msgid "Foto Frente y Placa"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "GSM Information"
+msgstr "Información GSM"
+
+#. module: tir_sisea_custom
+#: model:ir.module.category,name:tir_sisea_custom.module_category_recharge
+#: model:ir.ui.menu,name:tir_sisea_custom.recharge_connector_menu
+#: model:ir.ui.menu,name:tir_sisea_custom.recharge_root_menu
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.recharge_form_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.recharge_tree_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "GSM Module"
+msgstr "Módulo GSM"
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.group_recharge_manager
+msgid "GSM Module Manager"
+msgstr "Administrador de Módulo GSM"
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.group_recharge_user
+msgid "GSM Module User"
+msgstr "Usuario de Módulo GSM"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__gsm_number
+msgid "GSM numero"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_company_form_inherit
+msgid "Generar Llave"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_account_invoice_filter
+msgid "Gestionado"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_bank_statement_line__proceso_gestion
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move__proceso_gestion
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_payment__proceso_gestion
+msgid "Gestionando"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_move_form_inherit
+msgid "Gestionar"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_bank_statement_line__gestion_line_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move__gestion_line_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_payment__gestion_line_ids
+msgid "Gestiones Realizadas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_move_form_inherit
+msgid "Gestión de Cobro"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__supp
+msgid "Has Contacts"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_sale_subscription_soporte
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__supp_ids
+msgid "Helpdesk Contacts"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_helpdesk_ticket
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__ticket_ids
+msgid "Helpdesk Ticket"
+msgstr "Ticket de servicio de asistencia"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__sale_subscription__costumer_condition__highrisk
+msgid "High Risk Costumer"
+msgstr "Cliente Alto Riesgo"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_payment__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_fetchmail_server__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_ir_mail_server__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_mail_thread__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_company__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_stock_picking__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_exception_icon
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_exception_icon
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_exception_icon
+msgid "Icon"
+msgstr "Icono"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__activity_exception_icon
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__activity_exception_icon
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Icono para indicar una actividad de excepción"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.report_saleorder_document
+msgid "Identificación"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__message_needaction
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__message_unread
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__message_needaction
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__message_unread
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__message_needaction
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Si está marcado, los mensajes nuevos requieren su atención"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__message_has_error
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__message_has_sms_error
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__message_has_error
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__message_has_sms_error
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__message_has_error
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge_line__payment_state__process
+msgid "In Process"
+msgstr "En Proceso"
+
+#. module: tir_sisea_custom
+#: model:helpdesk.stage,name:tir_sisea_custom.stage_in_progress
+msgid "In Progress"
+msgstr "En Proceso"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_fetchmail_server
+msgid "Incoming Mail Server"
+msgstr "Servidor de correo entrante"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_account_payment__payment_method
+msgid "Inidica el medio por el que se realizó el pago"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_instalacion
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_instalacion
+msgid "Instalación"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:crm.stage,name:tir_sisea_custom.stage_lead7
+msgid "Installation "
+msgstr "Instalación"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order__installation_ids
+msgid "Installation Lines"
+msgstr "Lineas de Instalación"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_order_form
+msgid "Installation Products"
+msgstr "Productos para Instalación"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__state
+msgid "Internal State"
+msgstr "Estado Interno"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__move_id
+msgid "Invoice"
+msgstr "Factura"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.helpdesk_ticket_view_form
+msgid "Invoices:"
+msgstr "Facturas:"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_is_follower
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_is_follower
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_is_follower
+msgid "Is Follower"
+msgstr "Es seguidor"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_fetchmail_server__type_bank
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_ir_mail_server__type_bank
+msgid "Issuer Recurring Charges"
+msgstr "Cargos recurrentes del emisor"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_company__tir_key
+msgid "Key Company"
+msgstr "Llave de la compañia"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__kit_alarma
+msgid "Kit Alarmas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__kit_cctv
+msgid "Kit CCTV"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.cards_form_view
+msgid "LOCK / UNLOCK"
+msgstr "BLOQUEAR / DESBLOQUEAR"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid ""
+"La fecha del próximo cargo automático debe ser igual o mayor a la fecha de "
+"la próxima factura"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_payment____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_fetchmail_server____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_ir_mail_server____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_mail_thread____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_company____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte____last_update
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_stock_picking____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__last_recharge
+msgid "Last Recharge"
+msgstr "Última Recarga"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__write_uid
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__write_uid
+msgid "Last Updated by"
+msgstr "Actualizado por última vez por"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_move_gestion_line__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__write_date
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__contract_latitude
+msgid "Latitud"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Inicaitiva / Oportunbidad"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.helpdesk_ticket_view_form
+msgid "Limpiar"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_account_move_gestion_line
+msgid "Lineas de Gestion de Contabilidad"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__llaves_rf
+msgid "Llaves RF"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__lock
+msgid "Lock Information"
+msgstr "Información de Bloqueo"
+
+#. module: tir_sisea_custom
+#. openerp-web
+#: code:addons/tir_sisea_custom/static/src/xml/base.xml:0
+#, python-format
+msgid "Logo"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__contract_longitude
+msgid "Longitud"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_order_form
+msgid "Líneas de Instalación"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_ir_mail_server
+msgid "Mail Server"
+msgstr "Servidor de correo"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_main_attachment_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_main_attachment_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Adjunto principal"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.crm_lead_view_form
+msgid "Mark as Lost"
+msgstr "Marcar como perdida"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_has_error
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_has_error
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_has_error
+msgid "Message Delivery error"
+msgstr "Error de entrega de mensaje"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_ids
+msgid "Messages"
+msgstr "Mensajes"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.report_saleorder_document
+msgid "Modena:"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/automatic_charge.py:0
+#, python-format
+msgid "Modify Asset"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:helpdesk.team,name:tir_sisea_custom.team_monitoring
+msgid "Monitoring"
+msgstr "Monitoreo"
+
+#. module: tir_sisea_custom
+#: model:crm.stage,name:tir_sisea_custom.stage_lead12
+msgid "Monitoring account"
+msgstr "Cuenta de Monitoreo"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_order_form
+msgid "Move Stock"
+msgstr "Stock Instalación"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__my_activity_date_deadline
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__my_activity_date_deadline
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Fecha límite de actividad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_account_payment__payment_method
+msgid "Método de Pago"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__movil_reporte
+msgid "Móvil"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge__state__0
+msgid "NO ENVIADO"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank__name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_bank_line__name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__name
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: tir_sisea_custom
+#: model:helpdesk.stage,name:tir_sisea_custom.stage_new
+msgid "New"
+msgstr "Nuevo"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_date_deadline
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_date_deadline
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Fecha límite para la próxima actividad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_summary
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_summary
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_summary
+msgid "Next Activity Summary"
+msgstr "Resumen de la siguiente actividad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_type_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_type_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_type_id
+msgid "Next Activity Type"
+msgstr "Siguiente tipo de actividad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__next_recharge
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_recharge_filter
+msgid "Next Recharge"
+msgstr "Próxima Recarga"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.crm_lead_view_form
+msgid "Next Stage"
+msgstr "Siguiente etapa"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+msgid "No autorizadas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+msgid "No pagadas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/account_move.py:0
+#, python-format
+msgid "No pudo guardarse correctamente el comentario: comentario_gestion"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/account_move.py:0
+#, python-format
+msgid ""
+"No pudo guardarse correctamente el usuario del comentario: "
+"comentario_gestion"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/automatic_charge.py:0
+#, python-format
+msgid ""
+"No puede modificar el documento de un cargo automático que se encuentra "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__persona_reporte
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__name
+msgid "Nombre"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__img_placa_name
+msgid "Nombre Foto"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__sale_subscription__costumer_condition__normal
+msgid "Normal Costumer"
+msgstr "Cliente Normal"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge_line__payment_state__not_paid
+msgid "Not Paid"
+msgstr "No Pagada"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__comment
+msgid "Nota de Cierre de Tiquete"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__notas_opera
+msgid "Notas Operador"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__n_temp
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__n_temp
+msgid "Notas Temporales"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__notas_tec
+msgid "Notas Técnico"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__observacion
+msgid "Notes"
+msgstr "Notas"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__name
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.recharge_form_view
+msgid "Number"
+msgstr "Número"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_sale_subscription_number_category
+msgid "Number Tags"
+msgstr "Etiquetas Número"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_needaction_counter
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_needaction_counter
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Número de Acciones"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_has_error_counter
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_has_error_counter
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_has_error_counter
+msgid "Number of errors"
+msgstr "Número de Errores"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__message_needaction_counter
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__message_needaction_counter
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Número de mensajes que requieren una acción"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__message_has_error_counter
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__message_has_error_counter
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Número de mensajes con error de entrega"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__message_unread_counter
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__message_unread_counter
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Número de mensajes no leídos"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/subscription_recarga.py:0
+#, python-format
+msgid "Número de teléfono inválido"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/subscription_recarga.py:0
+#, python-format
+msgid "Número de teléfono inválido, ya existe en el sistema"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#: code:addons/tir_sisea_custom/wizard/charge_line_change_date.py:0
+#, python-format
+msgid "Ocurrió un error al crear el archivo a enviar"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#: code:addons/tir_sisea_custom/wizard/charge_line_change_date.py:0
+#, python-format
+msgid "Ocurrió un error al crear el archivo temporal"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/helpdesk.py:0
+#, python-format
+msgid ""
+"Ocurrió un error al finalizar el ticket, por favor complete el campo Nota de"
+" Cierre de Tiquete"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/helpdesk.py:0
+#, python-format
+msgid "Ocurrió un error al finalizar el ticket, valor del campo: "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__tipo_operacion
+msgid "Operación"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__analytic_account_id
+msgid "Order"
+msgstr "Orden"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__order_id
+msgid "Order Reference"
+msgstr "Referencia de Orden"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_charge_line_filter
+msgid "Pagadas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge_line__payment_state__paid
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_form_view
+msgid "Paid"
+msgstr "Pagado"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__p_claves
+msgid "Palabras Claves"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__parent_id
+msgid "Parent Assigned"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__parent_id
+msgid "Parent Category"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__parent_path
+msgid "Parent Path"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_recharge_filter
+msgid "Partner"
+msgstr "Cliente"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__partner_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__partner_id
+msgid "Partner Assigned"
+msgstr "Socio asignado"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__card_id
+msgid "Partner Card Information"
+msgstr "Información de la Tarjeta de Socio"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner__contract_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner__installation_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_users__contract_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_users__installation_ids
+msgid "Partner Contracts"
+msgstr "Contratos de partner"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_res_partner_cards
+msgid "Partner Credit Card Information"
+msgstr "Información de la Tarjeta de Crédito del Socio"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__partner_ids
+msgid "Partners"
+msgstr "Clientes"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__payment_id
+msgid "Payment"
+msgstr "Pago"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__payment_state
+msgid "Payment Status"
+msgstr "Estado de pago"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_account_payment
+msgid "Payments"
+msgstr "Pagos"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__pendiente_de_validar
+msgid "Pendiente De Validar"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_search_inherit
+msgid "Pendiente de Validar"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__calificado
+msgid "Permiso para Calificado"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__conta
+msgid "Permiso para Contabilidad"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__coordinacion
+msgid "Permiso para Coordinación"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__cuenta_monitoreo
+msgid "Permiso para Cuenta Monitoreo"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__finalizado
+msgid "Permiso para Finalizado"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__formalizacion
+msgid "Permiso para Formalización"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__instalacion
+msgid "Permiso para Instalación"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__propuesta
+msgid "Permiso para Propuesta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__soporte
+msgid "Permiso para Soporte"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__valida_doc
+msgid "Permiso para Validación de Documentos"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_stage__valida_cuenta
+msgid "Permiso para Validar Cuentas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__has_aprove_crm_group
+msgid "Permisos para aprobar"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.group_ticket_account
+msgid "Permite mover tickets fuera de contabilidad"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.helpdesk_ticket_view_form
+msgid "Persona que Reporta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order__invoice_picking_id
+msgid "Picking Id"
+msgstr "ID Picking"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order__picking_type_id
+msgid "Picking Type"
+msgstr "Tipo de Picking"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_order.py:0
+#, python-format
+msgid "Please define an accounting sales journal for the company %s (%s)."
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/credit_card_partner.py:0
+#, python-format
+msgid ""
+"Please validate the card number as it does not have the proper structure"
+msgstr ""
+"Valide el número de la tarjeta, ya que no tiene la estructura adecuada."
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/credit_card_partner.py:0
+#, python-format
+msgid "Por favor eliminar los guiones de la tarjeta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__has_comments
+msgid "Posee Comentarios"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:helpdesk.stage,legend_done:tir_sisea_custom.stage_cancelled
+#: model:helpdesk.stage,legend_done:tir_sisea_custom.stage_in_progress
+#: model:helpdesk.stage,legend_done:tir_sisea_custom.stage_new
+#: model:helpdesk.stage,legend_done:tir_sisea_custom.stage_solved
+msgid "Preparado"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.crm_lead_view_form
+msgid "Previous Stage"
+msgstr "Etapa anterior"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "Proceso CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__processed
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order__processed
+msgid "Processed"
+msgstr "Procesada"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_propuesta
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_propuesta
+msgid "Propuesta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__proveedor_sim
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__category_id
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.recharge_form_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.recharge_tree_view
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "Proveedor"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_calificado
+msgid "Puede mover oportunidades a Calificado en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_conta
+msgid "Puede mover oportunidades a Contabilidad en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_coordinacion
+msgid "Puede mover oportunidades a Coordinación en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_cuenta_monitoreo
+msgid "Puede mover oportunidades a Cuenta de Monitoreo en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_finalizado
+msgid "Puede mover oportunidades a Finalizado en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_formalizacion
+msgid "Puede mover oportunidades a Formalización en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_instalacion
+msgid "Puede mover oportunidades a Instalación en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_propuesta
+msgid "Puede mover oportunidades a Propuesta en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_soporte
+msgid "Puede mover oportunidades a Soporte en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_valida_doc
+msgid "Puede mover oportunidades a Valida Documentos en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.crm_group_valida_cuentas
+msgid "Puede mover oportunidades a Validar Cuentas en el CRM"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__gmaps
+msgid "Punto Google Maps"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_order_installation__quantity
+msgid "Quantity that will be invoiced."
+msgstr "Cantidad que se facturará"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_bank_form_view
+msgid "READ"
+msgstr "LEER"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_form_view
+msgid "RESEND"
+msgstr "REENVIAR"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/automatic_charge.py:0
+#, python-format
+msgid "RESEND: "
+msgstr "REENVIAR: "
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__recarga
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__sale_subscription_number_line__tipo_operacion__recarga
+msgid "Recarga"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.recharge_form_view
+msgid "Recargas"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_line__date_recharge
+msgid "Recharge Date"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__recharges_ids
+msgid "Recharges"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__send
+msgid "Recurring Charges Send"
+msgstr "Envío de cargos recurrentes"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__relacion_reporte
+msgid "Relación"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__recurring_charges
+msgid "Requiere Cargos Automáticos"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__activity_user_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__activity_user_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__activity_user_id
+msgid "Responsible User"
+msgstr "Usuario Responsable"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__resp_armada
+msgid "Respuesta armada"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.crm_lead_view_form
+msgid "Restore"
+msgstr "Restablecer"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_company_form_inherit
+msgid "SISEA Configuration"
+msgstr "Configuración SISEA"
+
+#. module: tir_sisea_custom
+#: model:ir.module.category,name:tir_sisea_custom.sisea_category
+msgid "SISEA Subscriptions"
+msgstr "Tarjetas de crédito de socios"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_has_sms_error
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_has_sms_error
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Error en la entrega del SMS"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid "SUBS - Dentro de: user_has_groups"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid "SUBS - Valor de val: "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid "SUBS - val no esta dentro de permitidos"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__panel_sabotaje
+msgid "Sabotaje Panel"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_sale_order
+msgid "Sale Order"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_sale_subscription
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__subscription_id
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__subscription_id
+msgid "Sale Subscription"
+msgstr "Suscripción de Venta"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_sale_subscription_number
+msgid "Sale Subscription Number"
+msgstr "Número de Suscripción"
+
+#. module: tir_sisea_custom
+#: model:ir.actions.server,name:tir_sisea_custom.ir_cron_recurring_charges_ir_actions_server
+#: model:ir.cron,cron_name:tir_sisea_custom.ir_cron_recurring_charges
+#: model:ir.cron,name:tir_sisea_custom.ir_cron_recurring_charges
+msgid "Sale Subscription: Apply Recurring Charges "
+msgstr "Suscripción de venta: aplicar cargos recurrentes"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_sale_order_installation
+msgid "Sales Order Line"
+msgstr "Líneas de Orden de Venta"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/wizard/charge_line_change_date.py:0
+#: code:addons/tir_sisea_custom/wizard/charge_line_change_date.py:0
+#, python-format
+msgid "Se cambió la fecha de  a  Estado del Cargo: "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_recharge_filter
+msgid "Search GSM Information"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__sequence
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__secuencia
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_soporte__secuencia
+msgid "Secuencia"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__serial_camara
+msgid "Serial WiFi Cámara"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__senna_recurrente
+msgid "Señales recurrentes"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.group_subs_manager
+msgid "Solo modificar Validación de Contrato"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:helpdesk.stage,name:tir_sisea_custom.stage_solved
+msgid "Solved"
+msgstr "Resuelto"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_soporte
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_soporte
+msgid "Soporte"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_subscriptions
+msgid "Status"
+msgstr "Estado"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__activity_state
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__activity_state
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Estado basado en actividades\n"
+"Vencido: la fecha de vencimiento ya pasó\n"
+"Hoy: la fecha de actividad es hoy\n"
+"Planificado: actividades futuras."
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_subscriptions
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_recharge_filter
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_res_partner_inherit
+msgid "Subscription"
+msgstr "Suscripción"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__number_ids
+msgid "Subscription Numbers"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_home_menu_subscription
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_home_subscription
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_subscriptions
+msgid "Subscriptions"
+msgstr "Suscripciones"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__price_subtotal
+msgid "Subtotal"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:crm.stage,name:tir_sisea_custom.stage_lead9
+#: model:helpdesk.team,name:tir_sisea_custom.team_support
+msgid "Support"
+msgstr "Soporte"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__contract
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__subscription_id
+msgid "Suscripción"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "Suscripción Validada"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number_category__name
+msgid "Tag Name"
+msgstr "Nombre de Etiqueta"
+
+#. module: tir_sisea_custom
+#: model:helpdesk.team,name:tir_sisea_custom.team_technical
+msgid "Technical Attention"
+msgstr "Atención Técnica"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__telecom_number
+msgid "Telcom numero"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__tel_reporte
+msgid "Teléfono"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number_category__active
+msgid "The active field allows you to hide the category without removing it."
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/credit_card_partner.py:0
+#, python-format
+msgid "The date is not in the proper format"
+msgstr "La fecha no tiene el formato adecuado."
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/credit_card_partner.py:0
+#, python-format
+msgid ""
+"The information must be less than 36 characters, you can correct it by:\n"
+"\"\""
+msgstr ""
+"La información debe tener menos de 36 caracteres, puede corregirla por:\n"
+"\"\""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/credit_card_partner.py:0
+#, python-format
+msgid "The separator symbol is not the one indicated, it must be \"/\""
+msgstr "El símbolo separador no es el indicado, debe ser  \"/\""
+
+#. module: tir_sisea_custom
+#: model:ir.model.constraint,message:tir_sisea_custom.constraint_sale_subscription_uniq_defaut_contract
+msgid "There is already a subscription with the indicated number!"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_ir_mail_server__bank_receiver
+msgid "This email will receive recurring charges "
+msgstr "Este correo electrónico recibirá cargos recurrentes"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_order__picking_type_id
+msgid "This will determine picking type of incoming shipment"
+msgstr "Esto determinará el tipo de picking del envío entrante."
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket_lines__parent_id
+msgid "Ticket"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__ticket_count
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__ticket_count
+msgid "Tickets"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.helpdesk_ticket_view_form
+msgid "Tickets Asociados al Cliente"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_helpdesk_ticket_lines
+msgid "Tickets Relacionados"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__tipo_panel
+msgid "Tipo Panel"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__tipo_teclado
+msgid "Tipo Teclado"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_subscriptions
+msgid "Total"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge__doc_quantity
+msgid "Total Documents"
+msgstr "Total de Documentos"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_helpdesk_ticket__count_invoice
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_company__tolerancia_documentos
+msgid "Total Unpaid Documents"
+msgstr "Total de Documento no pagados"
+
+#. module: tir_sisea_custom
+#: model:ir.model,name:tir_sisea_custom.model_stock_picking
+msgid "Transfer"
+msgstr "Transferencia"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__activity_exception_decoration
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__activity_exception_decoration
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "Tipo de actividad de excepción registrada"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__tecnico_instalador
+msgid "Técnico instalador"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_camaras_line__ubicacion_camara
+msgid "Ubicación Cámara"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__ubica_dvr
+msgid "Ubicación DVR"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__ubica_panel
+msgid "Ubicación Panel"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__ubica_sirena
+msgid "Ubicación Sirena"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__ubica_teclado
+msgid "Ubicación Teclado"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields.selection,name:tir_sisea_custom.selection__automatic_charge_line__payment_state__no_auth
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_form_view
+msgid "Unauthorized"
+msgstr "No Autorizado"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__price_unit
+msgid "Unit Price"
+msgstr "Precio Unitario"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_order_installation__uom_id
+msgid "Unit of Measure"
+msgstr "unidad de Medida"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_unread
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_unread
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_unread
+msgid "Unread Messages"
+msgstr "Mensajes no Leídos"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__message_unread_counter
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__message_unread_counter
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Contador de mensajes no leídos"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.view_order_form
+msgid "UoM"
+msgstr "UdM"
+
+#. module: tir_sisea_custom
+#: model:res.groups,name:tir_sisea_custom.sisea_group_user
+msgid "User"
+msgstr "Usuario"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.sale_subscription_view_form
+msgid "Validación de Contrato"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_valida_cuenta
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_valida_cuenta
+msgid "Validación de Cuenta"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_crm_lead__com_valida_doc
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__com_valida_doc
+msgid "Validación de Documentos"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#: code:addons/tir_sisea_custom/models/sale_subscription.py:0
+#, python-format
+msgid ""
+"Validar los campos, usted solo tiene permiso de modificar 'Validación de "
+"Contrato'"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:crm.stage,name:tir_sisea_custom.stage_lead8
+msgid "Validate Accounts"
+msgstr "Validar cuentas"
+
+#. module: tir_sisea_custom
+#: model:crm.stage,name:tir_sisea_custom.stage_lead5
+msgid "Validation of Documents"
+msgstr "Validación de documentos"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.actions.act_window,help:tir_sisea_custom.charge_bank_action_model
+msgid "View all Bank Receptor History!"
+msgstr "Ver el historial del receptor bancario!"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.actions.act_window,help:tir_sisea_custom.charge_bank_line_action_model
+#: model_terms:ir.actions.act_window,help:tir_sisea_custom.charge_line_action_model
+msgid "View all Charge Lines Information!"
+msgstr "Ver toda la información de las líneas de cargo"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.actions.act_window,help:tir_sisea_custom.charge_action_model
+msgid "View all Charge's Information!"
+msgstr "Ver toda la información del cargo!"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.actions.act_window,help:tir_sisea_custom.cards_action_model
+msgid "View all Customer's Information!"
+msgstr "Ver toda la información del cliente!"
+
+#. module: tir_sisea_custom
+#: model_terms:ir.actions.act_window,help:tir_sisea_custom.recharge_action_model
+msgid "View all GSM's Information!"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.charge_line_change_view
+msgid "Volver a Generar Archivo"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line__website_message_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_res_partner_cards__website_message_ids
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription_number__website_message_ids
+msgid "Website Messages"
+msgstr "Mensajes del sitio web"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,help:tir_sisea_custom.field_automatic_charge_line__website_message_ids
+#: model:ir.model.fields,help:tir_sisea_custom.field_res_partner_cards__website_message_ids
+#: model:ir.model.fields,help:tir_sisea_custom.field_sale_subscription_number__website_message_ids
+msgid "Website communication history"
+msgstr "Historial de comunicación del sitio web"
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/subscription_recarga.py:0
+#, python-format
+msgid "You can not create recursive tags."
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model_terms:ir.ui.view,arch_db:tir_sisea_custom.portal_my_subscriptions
+msgid "You don't have any subscriptions yet."
+msgstr "No tiene todavía ninguna subscripción."
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s. <br/><br/>Comentario de etapa Calificado:<br/><br/>%s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s. <br/><br/>Comentario de etapa Coordinación. <br/><br/>%s."
+" "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s. <br/><br/>Comentario de etapa Cuenta "
+"Monitoreo:<br/><br/>%s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s. <br/><br/>Comentario de etapa Formalización.<br/><br/>%s."
+" "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s. <br/><br/>Comentario de etapa Instalación.<br/><br/> %s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s. <br/><br/>Comentario de etapa Propuesta:<br/><br/>%s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s. <br/><br/>Comentario de etapa Soporte.<br/><br/>%s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s. <br/><br/>Comentario de etapa Valida "
+"Documentos.<br/><br/>%s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s.<br/><br/>Comentario de etapa Finalizado.<br/><br/>%s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s.<br/><br/>Comentario de etapa Validación de Cuenta. "
+"<br/><br/>%s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/crm.py:0
+#, python-format
+msgid ""
+"[ETAPA ACTUAL] %s<br/><br/>Comentario de etapa Contabilidad.<br/><br/>%s. "
+msgstr ""
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_sale_subscription__colaborator_gestor
+msgid "manager"
+msgstr "Gestor"
+
+#. module: tir_sisea_custom
+#: model:ir.model.fields,field_description:tir_sisea_custom.field_automatic_charge_line_change__process
+msgid "¿Incluir los cargos que están en proceso?"
+msgstr ""
+
+#. module: tir_sisea_custom
+#: code:addons/tir_sisea_custom/models/subscription_recarga.py:0
+#, python-format
+msgid "Éxito en operación!"
+msgstr ""

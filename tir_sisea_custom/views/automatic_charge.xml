@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <!--PARA VER ARCHIVOS ENVIADOS-->
+
+        <record id="charge_form_view" model="ir.ui.view">
+            <field name="name">automatic.charge.form</field>
+            <field name="model">automatic.charge</field>
+            <field name="arch" type="xml">
+                <form string="Charge Information">
+                    <sheet>
+                        <field name="name"/>
+                        <group>
+                            <field name="name_file" invisible="1"/>
+                            <field name="file" filename="name_file"/>
+                            <field name="doc_quantity"/>
+                            <field name="amount_total"/>
+                            <field name="state"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="charge_tree_view">
+            <field name="name">automatic.charge.tree</field>
+            <field name="model">automatic.charge</field>
+            <field name="arch" type="xml">
+                <tree string="Charge Information" default_order='create_date desc'>
+                    <field name="name"/>
+                    <field name="state"/>
+                    <field name="create_date"/>
+                    <field name="doc_quantity"/>
+                    <field name="amount_total"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="charge_action_model" model="ir.actions.act_window">
+            <field name="name">Files Sent to Bank Detail</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">automatic.charge</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    View all Charge's Information!
+                </p>
+            </field>
+        </record>
+
+
+        <!--PARA VER DETALLE DE ARCHIVOS ENVIADOS-->
+
+        <record id="charge_line_form_view" model="ir.ui.view">
+            <field name="name">automatic.charge.line.form</field>
+            <field name="model">automatic.charge.line</field>
+            <field name="arch" type="xml">
+                <form string="Charge Line Information">
+                    <header>
+                        <button name="resend" type="object" string="RESEND" style="background-color:#00A09D; color: white" attrs="{'invisible':[('payment_state', '!=', 'no_auth'), ('processed', '!=', True)]}"></button>
+                     </header>
+                    <sheet>
+                        <field name="name" invisible="1"/>
+
+                        <field name="payment_state" invisible="1"/>
+                        <field name="processed" invisible="1"/>
+                        <!-- Pagado -->
+                        <widget name="web_ribbon" title="Paid" attrs="{'invisible':[('payment_state', '!=', 'paid')]}"/>
+                        <!-- No Autorizado -->
+                        <widget name="web_ribbon" bg_color="bg-danger" title="Unauthorized" attrs="{'invisible':[('payment_state', '!=', 'no_auth')]}"/>
+
+                        <group>
+                            <field name="card_id"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="company_id" invisible="1"/>
+                            <field name="move_id" domain="[('state', '=', 'posted'), ('move_type', '=', 'out_invoice'),('payment_state', '=', 'not_paid')]"/>
+                            <field name="contract" />
+                            <field name="partner_id" />
+                            <field name="payment_id" readonly="1"/>
+                            <field name="amount_total" readonly="1"/>
+                            <field name="date_doc"/>
+                            <field name="bank_answer" readonly="1"/>
+                            <field name="n_autorizacion" readonly="1"/>
+                            <field name="observacion" readonly="1"/>
+                        </group>
+
+                    </sheet>
+                    <div class="o_attachment_preview"/>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="charge_line_tree_view">
+            <field name="name">automatic.charge.line.tree</field>
+            <field name="model">automatic.charge.line</field>
+            <field name="arch" type="xml">
+                <tree default_order='date_doc desc, move_id asc' string="Charge Line Information" decoration-bf="bank_answer != '00-APROBADO' and bank_answer != False" decoration-success="bank_answer == '00-APROBADO'" decoration-danger="bank_answer != '00-APROBADO' and bank_answer != False">
+                    <field name="date_doc"/>
+                    <field name="name"/>
+                    <field name="contract" />
+                    <field name="move_id" optional="hide"/>
+                    <field name="card_id"/>
+                    <field name="amount_total"/>
+                    <field name="n_autorizacion"/>
+                    <field name="bank_answer" optional="hide"/>
+                    <field name="payment_state"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="charge_line_action_model" model="ir.actions.act_window">
+            <field name="name">Automatic Charges Detail</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">automatic.charge.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    View all Charge Lines Information!
+                </p>
+            </field>
+        </record>
+
+        <record id="view_charge_line_filter" model="ir.ui.view">
+            <field name="name">automatic.charge.line.select</field>
+            <field name="model">automatic.charge.line</field>
+            <field name="arch" type="xml">
+                <search string="Buscar Cargos Automáticos">
+                    <field name="name"/>
+                    <field name="contract"/>
+                    <field name="card_id"/>
+                    <separator/>
+                    <filter domain="[('payment_state', '=', 'not_paid')]" name="pnot_paid" help="No pagadas"/>
+                    <filter domain="[('payment_state', '=', 'process')]" name="pprocess" help="En proceso"/>
+                    <filter domain="[('payment_state', '=', 'no_auth')]" name="pno_auth" help="No autorizadas"/>
+                    <filter domain="[('payment_state', '=', 'paid')]" name="ppaid" help="Pagadas"/>
+                    <separator/>
+                    <filter name="date_doc" string="Fecha" date="date_doc"/>
+                    <separator/>
+                    <group expand="0" string="Agrupar por">
+                        <filter string="Fecha" name="date_doc" context="{'group_by':'date_doc'}"/>
+                        <filter name="payment_state" string="Estado de pago" context="{'group_by':'payment_state'}"/>
+                        <filter name="contract" string="Contrato" context="{'group_by':'contract'}"/>
+                    </group>
+               </search>
+            </field>
+        </record>
+
+
+        <menuitem   id="charge_connector_menu"
+                    name="Charges Information"
+                    groups="tir_sisea_custom.sisea_group_admin,tir_sisea_custom.sisea_group_user"
+                    parent="tir_sisea_custom.cards_root_menu"/>
+
+        <menuitem   id="charge_connector"
+                    name="Files Sent to Bank " action="charge_action_model"
+                    sequence="1"
+                    groups="tir_sisea_custom.sisea_group_admin,tir_sisea_custom.sisea_group_user"
+                    parent="charge_connector_menu"/>
+
+        <menuitem   id="charge_line_connector"
+                    groups="tir_sisea_custom.sisea_group_admin,tir_sisea_custom.sisea_group_user"
+                    sequence="2"
+                    name="Automatic Charges Detail" action="charge_line_action_model"
+                    parent="charge_connector_menu"/>
+    </data>
+</odoo>

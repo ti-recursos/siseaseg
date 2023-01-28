@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="seq_subscription_update" model="ir.sequence">
+            <field name="name">Secuencia de Actualizacion de Precios</field>
+            <field name="code">subscription.update</field>
+            <field name="prefix"></field>
+            <field name="padding">10</field>
+            <field name="company_id">1</field>
+        </record>
+    </data>
+</odoo>

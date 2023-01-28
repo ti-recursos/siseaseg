@@ -1,0 +1,1 @@
+**Actualiza el precio de ciertas subscripciones en base a la utilización de filtros de busqueda**

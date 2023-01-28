@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+
+        <!--PARA VER ARCHIVOS ENVIADOS-->
+
+        <record id="charge_bank_form_view" model="ir.ui.view">
+            <field name="name">automatic.charge.bank.form</field>
+            <field name="model">automatic.charge.bank</field>
+            <field name="arch" type="xml">
+                <form string="Charge Information">
+                    <sheet>
+                        <field name="name" invisible="1"/>
+                        <group>
+                            <group>
+                                <field name="company_id"/>
+                            </group>
+                            <group>
+                                <field name="date_doc"/>
+                            </group>
+                            <separator string="Bank Files"/>
+
+                            <field name="bank_charge_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="file_data" filename="name"/>
+                                </tree>
+                            </field>
+                        </group>
+
+                        <button name="read_lines" groups="tir_sisea_custom.sisea_group_admin" type="object" string="READ" style="background-color:#00A09D; color: white" ></button>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="charge_bank_tree_view">
+            <field name="name">automatic.charge.bank.tree</field>
+            <field name="model">automatic.charge.bank</field>
+            <field name="arch" type="xml">
+                <tree string="Bank Receptor History" default_order='date_doc desc'>
+                    <field name="name"/>
+                    <field name="date_doc"/>
+
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="charge_bank_action_model" model="ir.actions.act_window">
+            <field name="name">Bank Receptor History</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">automatic.charge.bank</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    View all Bank Receptor History!
+                </p>
+            </field>
+        </record>
+
+
+        <!--PARA VER DETALLE DE ARCHIVOS ENVIADOS-->
+
+        <record id="charge_bank_line_form_view" model="ir.ui.view">
+            <field name="name">automatic.charge.bank.line.form</field>
+            <field name="model">automatic.charge.bank.line</field>
+            <field name="arch" type="xml">
+                <form string="Charge Line Information">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="file_data" filename="name"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="charge_bank_line_tree_view">
+            <field name="name">automatic.charge.bank.line.tree</field>
+            <field name="model">automatic.charge.bank.line</field>
+            <field name="arch" type="xml">
+                <tree string="Charge Line Information" default_order='create_date desc'>
+                    <field name="name"/>
+                    <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="charge_bank_line_action_model" model="ir.actions.act_window">
+            <field name="name">Charge Line Information</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">automatic.charge.bank.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{}</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    View all Charge Lines Information!
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem   id="charge_bank_connector"
+                    groups="tir_sisea_custom.sisea_group_admin,tir_sisea_custom.sisea_group_user"
+                    sequence="3"
+                    name="Bank Receptor History" action="charge_bank_action_model"
+                    parent="charge_connector_menu"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="report_wizard_view_form" model="ir.ui.view">
+            <field name="name">account.move.reports.custom.form</field>
+            <field name="model">account.move.reports.custom</field>
+            <field name="arch" type="xml">
+                <form string="Select period">
+                    <group>
+                        <group>
+                            <field name="doc_clientes" attrs="{'invisible':[('doc_proveedores', '=', True)]}"/>
+                            <field name="doc_proveedores" attrs="{'invisible':[('doc_clientes', '=', True)]}"/>
+                            <field name="economic_activity_id" domain="[('active', 'not in', [False])]"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                        </group>
+                    </group>
+                    <footer>
+
+                        <button name="print_project_report_xls" string="Generar - Excel" type="object" class="alert alert-success rounded-pill text-center font-weight-bold shadow-sm" role="alert"/>
+                        <button special="cancel" string="Cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window
+            id="move_reports_open_wizard"
+            name="Reporte de Impuestos"
+            res_model="account.move.reports.custom"
+            view_mode="form"
+            view_id="report_wizard_view_form"
+            target="new"/>
+
+        <menuitem action="move_reports_open_wizard"
+            name="Reporte de Impuestos"
+            id="menu_account_move_summary_report_wizard"
+            parent="account.account_reports_management_menu"/>
+    </data>
+</odoo>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="crm_iap_opportunity_kanban" model="ir.ui.view">
+        <field name="name">crm.opportunity.inherited.kanban</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_case_kanban_view_leads" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <span><strong>Contract: </strong><field name="contract"/></span>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_lead_view_form" model="ir.ui.view">
+        <field name="name">crm.lead.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+
+
+            <xpath expr="//page[1]" position="after">
+                <page string="Comentarios" attrs="{'invisible': [('type', '=', 'lead')]}">
+                    <group>
+                        <group>
+                            <field name="com_calificado"/>
+                        </group>
+                        <group>
+                            <field name="com_propuesta"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="com_formalizacion"/>
+                        </group>
+                        <group>
+                            <field name="com_valida_doc"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="com_cuenta_monitoreo"/>
+                        </group>
+                        <group>
+                            <field name="com_coordinacion"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="com_instalacion"/>
+                        </group>
+                        <group>
+                            <field name="com_valida_cuenta"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="com_soporte"/>
+                        </group>
+                        <group>
+                            <field name="com_conta"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="com_finalizado"/>
+                        </group>
+                        <group>
+
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//header" position="replace">
+                <header>
+                    <button name="action_return_stage" string="Previous Stage" type="object" class="oe_highlight" attrs="{'invisible': [('type', '=', 'lead')]}"/>
+                    <button name="action_next_stage" string="Next Stage" type="object" class="oe_highlight" attrs="{'invisible': [('type', '=', 'lead')]}"/>
+
+                    <button name="%(crm.action_crm_lead2opportunity_partner)d" string="Convert to Opportunity" type="action" help="Convert to Opportunity"
+                        class="oe_highlight" attrs="{'invisible': ['|', ('type', '=', 'opportunity'), ('active', '=', False)]}"/>
+                    <button name="toggle_active" string="Restore" type="object"
+                        attrs="{'invisible': ['|', ('probability', '&gt;', 0), ('active', '=', True)]}"/>
+                    <button name="action_set_lost" string="Mark as Lost" type="object"
+                        attrs="{'invisible': ['|', ('type', '=', 'opportunity'), '&amp;', ('probability', '=', 0), ('active', '=', False)]}"/>
+                    <field name="stage_id" widget="statusbar"
+                        options="{'clickable': '1', 'fold_field': 'fold'}"
+                        domain="['|', ('team_id', '=', team_id), ('team_id', '=', False)]"
+                        attrs="{'invisible': ['|', ('active', '=', False), ('type', '=', 'lead')]}"/>
+                </header>
+            </xpath>
+
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="contract" attrs="{'invisible': [('type', '=', 'lead')], 'required': [('type', '=', 'opportunity')]}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm.view_crm_case_opportunities_filter" model="ir.ui.view">
+        <field name="name">crm.lead.search.opportunity</field>
+        <field name="model">crm.lead</field>
+        <field name="priority">15</field>
+        <field name="arch" type="xml">
+            <search string="Search Opportunities">
+                <field name="name" string="Opportunity" filter_domain="[
+                    '|', '|', '|', '|',
+                    ('partner_id', 'ilike', self),
+                    ('partner_name', 'ilike', self),
+                    ('email_from', 'ilike', self),
+                    ('name', 'ilike', self),
+                    ('contact_name', 'ilike', self)]"/>
+                <field name="partner_id" operator="child_of" string="Customer" filter_domain="[
+                    '|', '|', '|',
+                    ('partner_id', 'ilike', self),
+                    ('partner_name', 'ilike', self),
+                    ('email_from', 'ilike', self),
+                    ('contact_name', 'ilike', self)]"/>
+                <field name="tag_ids" string="Tag" filter_domain="[('tag_ids', 'ilike', self)]"/>
+                <field name="contract" filter_domain="[('contract', '=', self)]"/>
+                <field name="user_id"/>
+                <field name="team_id"/>
+                <field name="stage_id" domain="[]"/>
+                <field name="country_id"/>
+                <field name="city"/>
+                <field name="phone_mobile_search"/>
+                <separator/>
+                <filter string="My Pipeline" name="assigned_to_me"
+                    domain="[('user_id', '=', uid)]"
+                    help="Opportunities that are assigned to me"/>
+                <filter string="Unassigned" name="unassigned"
+                    domain="[('user_id', '=', False)]" help="No salesperson"/>
+                <filter string="Open Opportunities" name="open_opportunities"
+                    domain="[('probability', '&lt;', 100), ('type', '=', 'opportunity')]"
+                    help="Open Opportunities"/>
+                <separator/>
+                <filter string="Unread Messages" name="message_needaction" domain="[('message_needaction', '=', True)]"/>
+                <separator/>
+                <filter string="Creation Date" name="creation_date" date="create_date"/>
+                <filter string="Closed Date" name="close_date" date="date_closed"/>
+                <separator/>
+                <filter string="Won" name="won" domain="['&amp;', ('active', '=', True), ('stage_id.is_won', '=', True)]"/>
+                <filter string="Lost" name="lost" domain="['&amp;', ('active', '=', False), ('probability', '=', 0)]"/>
+                <separator/>
+                <filter invisible="1" string="Overdue Opportunities" name="overdue_opp" domain="[('date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter invisible="1" string="Late Activities" name="activities_overdue"
+                    domain="[('activity_ids.date_deadline', '&lt;', context_today().strftime('%Y-%m-%d'))]"
+                    help="Show all opportunities for which the next action date is before today"/>
+                <filter invisible="1" string="Today Activities" name="activities_today"
+                    domain="[('activity_ids.date_deadline', '=', context_today().strftime('%Y-%m-%d'))]"/>
+                <filter invisible="1" string="Future Activities" name="activities_upcoming_all"
+                    domain="[('activity_ids.date_deadline', '&gt;', context_today().strftime('%Y-%m-%d'))]"/>
+                <separator/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By" colspan="16">
+                    <filter string="Salesperson" name="salesperson" context="{'group_by':'user_id'}"/>
+                    <filter string="Sales Team" name="saleschannel" context="{'group_by':'team_id'}"/>
+                    <filter name="stage" string="Stage" context="{'group_by':'stage_id'}"/>
+                    <filter name="city" string="City" context="{'group_by': 'city'}"/>
+                    <filter string="Country" name="country" context="{'group_by':'country_id'}" />
+                    <filter string="Lost Reason" name="lostreason" context="{'group_by':'lost_reason'}"/>
+                    <filter string="Company" name="company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    <filter string="Campaign" name="compaign" domain="[]" context="{'group_by':'campaign_id'}"/>
+                    <filter string="Medium" name="medium" domain="[]" context="{'group_by':'medium_id'}"/>
+                    <filter string="Source" name="source" domain="[]" context="{'group_by':'source_id'}"/>
+                    <separator orientation="vertical" />
+                    <filter string="Creation Date" context="{'group_by':'create_date:month'}" name="month"/>
+                    <filter string="Conversion Date" name="date_conversion" context="{'group_by': 'date_conversion'}" groups="crm.group_use_lead"/>
+                    <filter string="Expected Closing" name="date_deadline" context="{'group_by':'date_deadline'}"/>
+                    <filter string="Closed Date" name="date_closed" context="{'group_by':'date_closed'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>
