@@ -10,15 +10,22 @@
 
                 <xpath expr="//page[1]" position="after">
                     <page string="SISEA Configuration">
-                        <group col="4" colspan="2">
-                            <group>
-                                <field name="tolerancia_documentos"/>
+                        <group>
+                            <field name="tolerancia_documentos"/>
 
-                                <field name="tir_key" invisible="1"/>
-                                <field name="nr_afiliado" />
-                                <button name="create_key" type="object" string="Generar Llave"
-                                attrs="{'invisible':[('tir_key','!=', False)]}" groups="base.group_no_one"/>
-                            </group>
+                            <field name="tir_key" invisible="1"/>
+                            <field name="nr_afiliado" />
+                            <button name="create_key" type="object" string="Generar Llave"
+                            attrs="{'invisible':[('tir_key','!=', False)]}" groups="base.group_no_one"/>
+
+                            <field name="url_laro_automatic_charge" />
+                            <field name="id_laro" />
+
+                            <field name="url_laro_token" />
+                            <field name="token_laro" />
+                            <field name="last_token_laro" />
+
+                            <button name="update_laro_token" type="object" string="Refresh Token"  groups="base.group_no_one"/>
                         </group>
                     </page>
                 </xpath>

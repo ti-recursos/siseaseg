@@ -2,6 +2,8 @@ from odoo import fields, models, api, tools, _
 from odoo.exceptions import UserError
 from cryptography.fernet import Fernet
 
+import requests
+import json
 import datetime
 import pytz
 from time import strftime, gmtime
@@ -17,6 +19,32 @@ class ResCompany(models.Model):
     nr_afiliado = fields.Char(string="Affiliate Number", required=False)
 
     tolerancia_documentos = fields.Integer(string='Total Unpaid Documents')
+
+    url_laro_automatic_charge = fields.Char()
+    url_laro_token = fields.Char()
+    id_laro = fields.Char(string='ID Laro Solutions')
+    token_laro = fields.Char(string='TOKEN Laro Solutions')
+    last_token_laro = fields.Datetime()
+
+    def update_laro_token(self):
+        for company in self:
+            data = {
+                'IDUser': company.id_laro,
+                'Token': company.token_laro
+            }
+            url_laro = company.url_laro_token
+            if url_laro[-1:] == '/':
+                url_laro = url_laro[:-1]
+            res_get = requests.get(url_laro, params=data, timeout=2.50)
+            if res_get.status_code == 200:
+                respuesta_dict = json.loads(res_get.text)
+                if respuesta_dict.get('newToken'):
+                    company.write(
+                        {
+                            'token_laro': respuesta_dict['newToken'],
+                            'last_token_laro': fields.Datetime.now()
+                        }
+                    )
 
     def create_key(self):
         key = Fernet.generate_key()

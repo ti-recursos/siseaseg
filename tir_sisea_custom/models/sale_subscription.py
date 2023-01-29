@@ -1,4 +1,6 @@
 import logging
+import requests
+import json
 import datetime
 from typing_extensions import Self
 import pytz
@@ -249,6 +251,15 @@ class SaleSubscriptionSISEA(models.Model):
         self.message_post(body="abc")
         return res
 
+    # -------------------------------------------------------------------------
+    # LEGACY CODE
+    # -------------------------------------------------------------------------
+    # 29/01/2023
+    # Este código se encargaba de enviar el archivo al Banco Nacional.
+    #
+    # Se mantiene el código en caso de que en el futuro se requiera.
+    # -------------------------------------------------------------------------
+
     def _try_send(self):
         charges = self.env['automatic.charge'].sudo().search([('state', '=', '0')])
 
@@ -280,6 +291,15 @@ class SaleSubscriptionSISEA(models.Model):
                     template.attachment_ids = [(5, 0, 0)]
 
                     charge.state = '1'
+
+    # -------------------------------------------------------------------------
+    # LEGACY CODE
+    # -------------------------------------------------------------------------
+    # 29/01/2023
+    # Este código se encargaba de generar el archivo al Banco Nacional.
+    #
+    # Se mantiene el código en caso de que en el futuro se requiera.
+    # -------------------------------------------------------------------------
 
     @api.model
     def _recurring_charges(self, automatic=False):
@@ -379,6 +399,119 @@ class SaleSubscriptionSISEA(models.Model):
 
         except Exception as e:
             raise UserError(_('Ocurrió un error al crear el archivo temporal'))
+
+    # -------------------------------------------------------------------------
+    # NEW CODE
+    # -------------------------------------------------------------------------
+    # 29/01/2023
+    # Este código se encargará de enviar una petición POST a LARO SOLUTIONS
+    # para aplicar un cargo automático.
+    #
+    # -------------------------------------------------------------------------
+
+    @api.model
+    def _laro_recurring_charges(self, automatic=False):
+        current_date = datetime.date.today()
+
+        now_utc = datetime.datetime.now(pytz.timezone('UTC'))
+        now_cr = now_utc.astimezone(pytz.timezone('America/Costa_Rica'))
+        date_cr = now_cr.strftime("%Y%m%d")
+        send_date = now_cr.strftime("%d%m%Y")
+        domain = [('date_doc', '=', date_cr), ('send', '=', False)]
+        recurring_charges = self.env['automatic.charge.line'].sudo().search(domain)
+        key = self.env.user.company_id.tir_key
+        string = ""
+        contador = 0
+        amount_total = 0
+        if len(recurring_charges) > 0:
+            for charge in recurring_charges:
+
+                nro = str(charge.card_id.n_card).encode('ascii', errors='ignore').decode()
+                vcm = str(charge.card_id.date_due).encode('ascii', errors='ignore').decode()
+                nro_afilidado = charge.company_id.nr_afiliado
+
+                card_n = charge.card_id._decrypt(bytes(nro, 'utf-8'), key).decode()
+                date_due = charge.card_id._decrypt(bytes(vcm, 'utf-8'), key).decode()
+                if charge.contract:
+                    comment = "Contrato: " + str(charge.contract.code) + " "
+                else:
+                    comment = "Factura: " + str(charge.move_id.name) + " "
+
+                # Re calculo el monto en caso de que el documento esté pagado "parcialmente"
+                if charge.move_id.payment_state == "partial":
+                    if charge.move_id.currency_id.id != charge.company_id.currency_id.id:
+                        convert_amount = charge.move_id.currency_id._convert(
+                            charge.move_id.amount_residual,
+                            charge.company_id.company_id.currency_id,
+                            charge.company_id,
+                            charge.move_id.date
+                        )
+                        charge.amount_total = convert_amount
+                    else:
+                        convert_amount = charge.move_id.amount_residual
+                        charge.amount_total = convert_amount
+                else:
+                    convert_amount = charge.amount_total
+
+                if charge.move_id.payment_state not in ("paid", "reversed"):
+                    total = "{:.2f}".format(convert_amount)
+                    amount_total += convert_amount
+
+                    if not False in [nro, vcm, nro_afilidado, card_n, date_due, comment, total]:
+                        #f = open(fp.name, "w")
+                        # total_str = str(total).zfill(10)
+                        # if contador == len(recurring_charges):
+                        #     string += (card_n + total_str + nro_afilidado + send_date + date_due.replace('/', '') + comment + date_cr)
+                        # else:
+                        #     string += (card_n + total_str + nro_afilidado + send_date + date_due.replace('/', '') + comment + date_cr + "\r\n")
+
+                        url_laro = charge.company_id.url_laro_automatic_charge
+
+                        if url_laro[-1:] == '/':
+                            url_laro = url_laro[:-1]
+
+                        token = charge.company_id.token_laro
+                        id_laro = charge.company_id.id_laro
+                        idTransaccion = 1
+                        fechaVencimiento = date_due.replace('/', '')
+                        email = charge.move_id.partner_id.email
+                        identificadorUnico = charge.id
+                        monto = charge.amount_total
+
+                        data = {
+                            "idUsuario": id_laro,
+                            "token": token,
+                            "idTransaccion": idTransaccion,
+                            "tarjeta": card_n,
+                            "fechaVencimiento": fechaVencimiento,
+                            "monto": monto,
+                            "identificadorUnico": identificadorUnico,
+                            "email": email
+                        }
+
+                        res_post = requests.post(url_laro, json=data)
+
+                        respuesta_dict = json.loads(res_post.text)
+                        if respuesta_dict["codigoRespuesta"] == "00":
+                            charge._process_payment(respuesta_dict)
+                        else:
+                            charge.n_autorizacion = respuesta_dict['autorizacion']
+                            charge.observacion = str(respuesta_dict)
+
+                            charge.processed = True
+                            charge.payment_state = 'no_auth'
+
+                        charge.send = True
+
+                        contador += 1
+
+                    else:
+                        _logger.warning(_("Documento: #" + charge.name + " no se pudo aplicar el cargo automático"))
+                else:
+                    charge.send = True
+                    charge.payment_state = 'cancel'
+                    # contador += 1
+                total = 0
 
     @api.model
     def _cron_recurring_create_invoice(self):
@@ -669,12 +802,12 @@ class SaleSubscriptionSISEA(models.Model):
         #Si se modifican ambas
         #if vals.get('colaborator_gestor',False) and vals.get('costumer_condition',False):
 
-         #   body_str="""Gestor: """+ str(self.colaborator_gestor.name)  +" → "+ str(self.env['res.users'].browse(vals.get('colaborator_gestor')).name)
-         #   self.message_post(body=body_str)
+        #   body_str="""Gestor: """+ str(self.colaborator_gestor.name)  +" → "+ str(self.env['res.users'].browse(vals.get('colaborator_gestor')).name)
+        #   self.message_post(body=body_str)
 
-          #  body_str="""Condición de cliente ha sido modificada
-          #      """ +str(self.costumer_condition)+" → "+str(vals.get('costumer_condition'))
-         #   self.message_post(body=body_str)
+        #  body_str="""Condición de cliente ha sido modificada
+        #      """ +str(self.costumer_condition)+" → "+str(vals.get('costumer_condition'))
+        #   self.message_post(body=body_str)
         
         # Si se modifica el gestor
         if vals.get('colaborator_gestor',False):

@@ -141,6 +141,109 @@ class AutomaticChargeLine(models.Model):
             'context': self.env.context,
         }
 
+    # -------------------------------------------------------------------------
+    # NEW CODE
+    # -------------------------------------------------------------------------
+    # 29/01/2023
+    # Este código se encargará de crear el pago del documento
+    #
+    # -------------------------------------------------------------------------
+
+    def _process_payment(self, datos):
+        '''
+            En Odoo 14 no se utiliza account.payment para guardar un pago,
+            sino que se debe realiza desde account.payment.register
+        '''
+        self.ensure_one()
+        cargo = self
+        journal_id = self.env.ref('tir_api_cisa.journal_bank_151').id
+
+        if cargo.move_id.payment_state == 'no_paid':
+            cargo.n_autorizacion = datos['autorizacion']
+            cargo.observacion = str(datos)
+
+            payment_id = self.env['account.payment.register'].sudo().with_context(
+                active_model='account.move',
+                active_ids=cargo.move_id.ids
+            ).create(
+                {
+                    'payment_date': cargo.date_doc,
+                    'payment_method_id': self.env.ref('account.account_payment_method_manual_in').id,
+                    'amount': cargo.amount_total,
+                    'currency_id': cargo.currency_id.id,
+                    'journal_id': journal_id,
+                    'payment_type': 'inbound',
+                    'partner_type': 'customer',
+                    'partner_id': cargo.move_id.partner_id.id,
+                }
+            )
+
+            pago = payment_id.action_create_payments()
+            payment = self.env['account.payment'].sudo().search(
+                [
+                    ('id', '=', pago['res_id'])
+                ],
+                limit=1
+            )
+
+            # Publicación del Pago
+            if payment.state == 'draft':
+                payment.payment_method = 'automatic_charge'
+                if cargo.contract:
+                    payment.contract = cargo.contract.code
+                payment.action_post()
+            if cargo.contract:
+                payment.contract = cargo.contract.code
+            payment.payment_method = 'automatic_charge'
+            payment.ref = cargo.n_autorizacion
+
+            cargo.move_id.payment_id = payment.id
+            cargo.payment_id = payment.id
+            cargo.payment_state = 'paid'
+        else:
+            cargo.n_autorizacion = datos['autorizacion']
+            cargo.observacion = str(datos)
+
+            payment_id = self.env['account.payment.register'].sudo().with_context(
+                active_model='account.move',
+                active_ids=cargo.move_id.ids
+            ).create(
+                {
+                    'payment_date': cargo.date_doc,
+                    'payment_method_id': self.env.ref('account.account_payment_method_manual_in').id,
+                    'amount': cargo.amount_total,
+                    'currency_id': cargo.currency_id.id,
+                    'journal_id': journal_id,
+                    'payment_type': 'inbound',
+                    'partner_type': 'customer',
+                    'partner_id': cargo.move_id.partner_id.id,
+                }
+            )
+
+            pago = payment_id.action_create_payments()
+            payment = self.env['account.payment'].sudo().search(
+                [
+                    ('id', '=', pago['res_id'])
+                ],
+                limit=1
+            )
+
+            # Publicación del pago
+            if payment.state == 'draft':
+                payment.payment_method = 'automatic_charge'
+                if cargo.contract:
+                    payment.contract = cargo.contract.code
+                payment.action_post()
+            if cargo.contract:
+                payment.contract = cargo.contract.code
+            payment.payment_method = 'automatic_charge'
+            payment.ref = cargo.n_autorizacion
+
+            cargo.payment_id = payment.id
+            cargo.payment_state = 'paid'
+
+        cargo.processed = True
+
 
 class AutomaticChargeBank(models.Model):
     _name = 'automatic.charge.bank'

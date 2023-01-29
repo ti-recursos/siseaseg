@@ -27,6 +27,7 @@
         'data/helpdesk_team.xml',
         'data/ir_cron_data.xml',
         'data/ir_cron_data_2.xml',
+        'data/ir_cron_data_3.xml',
         'data/mail_template_bank.xml',
         'data/crm_stage_data.xml',
         'data/crm_group.xml',
