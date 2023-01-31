@@ -479,23 +479,23 @@ class SaleSubscriptionSISEA(models.Model):
                         monto = charge.amount_total
 
                         data = {
-                            "idUsuario": id_laro,
-                            "token": token,
+                            "idUsuario": str(id_laro),
+                            "token":  str(token),
                             "idTransaccion": idTransaccion,
-                            "tarjeta": card_n,
-                            "fechaVencimiento": fechaVencimiento,
+                            "tarjeta":  str(card_n),
+                            "fechaVencimiento": str(fechaVencimiento),
                             "monto": monto,
-                            "identificadorUnico": identificadorUnico,
-                            "email": email
+                            "identificadorUnico": str(identificadorUnico),
+                            "email": str(email)
                         }
 
                         res_post = requests.post(url_laro, json=data)
 
                         respuesta_dict = json.loads(res_post.text)
-                        if respuesta_dict["codigoRespuesta"] == "00":
+                        if respuesta_dict.get("codigoRespuesta") == "00":
                             charge._process_payment(respuesta_dict)
                         else:
-                            charge.n_autorizacion = respuesta_dict['autorizacion']
+                            charge.n_autorizacion = respuesta_dict.get('autorizacion')
                             charge.observacion = str(respuesta_dict)
 
                             charge.processed = True

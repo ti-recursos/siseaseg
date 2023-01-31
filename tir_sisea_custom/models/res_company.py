@@ -16,18 +16,19 @@ class ResCompany(models.Model):
     _description = 'Company Information'
 
     tir_key = fields.Char(string="Key Company", required=False)
-    nr_afiliado = fields.Char(string="Affiliate Number", required=False)
+    nr_afiliado = fields.Char(string="Affiliate Number", required=False, tracking=True)
 
-    tolerancia_documentos = fields.Integer(string='Total Unpaid Documents')
+    tolerancia_documentos = fields.Integer(string='Total Unpaid Documents', tracking=True)
 
-    url_laro_automatic_charge = fields.Char()
-    url_laro_token = fields.Char()
-    id_laro = fields.Char(string='ID Laro Solutions')
-    token_laro = fields.Char(string='TOKEN Laro Solutions')
-    last_token_laro = fields.Datetime()
+    url_laro_automatic_charge = fields.Char(tracking=True)
+    url_laro_token = fields.Char(tracking=True)
+    id_laro = fields.Char(string='ID Laro Solutions', tracking=True)
+    token_laro = fields.Char(string='TOKEN Laro Solutions', tracking=True)
+    last_token_laro = fields.Datetime(tracking=True)
 
     def update_laro_token(self):
-        for company in self:
+        companies = self.env['res.company'].sudo().search([])
+        for company in companies:
             data = {
                 'IDUser': company.id_laro,
                 'Token': company.token_laro
@@ -35,7 +36,7 @@ class ResCompany(models.Model):
             url_laro = company.url_laro_token
             if url_laro[-1:] == '/':
                 url_laro = url_laro[:-1]
-            res_get = requests.get(url_laro, params=data, timeout=2.50)
+            res_get = requests.get(url_laro, params=data)
             if res_get.status_code == 200:
                 respuesta_dict = json.loads(res_get.text)
                 if respuesta_dict.get('newToken'):

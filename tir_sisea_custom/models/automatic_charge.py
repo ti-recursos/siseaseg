@@ -159,7 +159,7 @@ class AutomaticChargeLine(models.Model):
         journal_id = self.env.ref('tir_api_cisa.journal_bank_151').id
 
         if cargo.move_id.payment_state == 'no_paid':
-            cargo.n_autorizacion = datos['autorizacion']
+            cargo.n_autorizacion = datos.get('autorizacion')
             cargo.observacion = str(datos)
 
             payment_id = self.env['account.payment.register'].sudo().with_context(
@@ -201,7 +201,7 @@ class AutomaticChargeLine(models.Model):
             cargo.payment_id = payment.id
             cargo.payment_state = 'paid'
         else:
-            cargo.n_autorizacion = datos['autorizacion']
+            cargo.n_autorizacion = datos.get('autorizacion')
             cargo.observacion = str(datos)
 
             payment_id = self.env['account.payment.register'].sudo().with_context(
