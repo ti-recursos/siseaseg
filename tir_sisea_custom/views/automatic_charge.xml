@@ -165,11 +165,11 @@
                     groups="tir_sisea_custom.sisea_group_admin,tir_sisea_custom.sisea_group_user"
                     parent="tir_sisea_custom.cards_root_menu"/>
 
-        <menuitem   id="charge_connector"
+        <!-- <menuitem   id="charge_connector"
                     name="Files Sent to Bank " action="charge_action_model"
                     sequence="1"
                     groups="tir_sisea_custom.sisea_group_admin,tir_sisea_custom.sisea_group_user"
-                    parent="charge_connector_menu"/>
+                    parent="charge_connector_menu"/> -->
 
         <menuitem   id="charge_line_connector"
                     groups="tir_sisea_custom.sisea_group_admin,tir_sisea_custom.sisea_group_user"

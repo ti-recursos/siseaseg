@@ -109,11 +109,11 @@
         </record>
 
 
-        <menuitem   id="charge_bank_connector"
+        <!-- <menuitem   id="charge_bank_connector"
                     groups="tir_sisea_custom.sisea_group_admin,tir_sisea_custom.sisea_group_user"
                     sequence="3"
                     name="Bank Receptor History" action="charge_bank_action_model"
-                    parent="charge_connector_menu"/>
+                    parent="charge_connector_menu"/> -->
 
     </data>
 </odoo>
