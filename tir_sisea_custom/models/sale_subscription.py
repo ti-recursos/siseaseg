@@ -488,7 +488,7 @@ class SaleSubscriptionSISEA(models.Model):
                             "identificadorUnico": str(identificadorUnico),
                             "email": str(email)
                         }
-                        _logger.warning(_("Laro: "+id_laro+" x1"))
+                        _logger.warning(_("Laro"))
                         #res_post = requests.post(url_laro, json=data)
 
                         #respuesta_dict = json.loads(res_post.text)
