@@ -488,10 +488,10 @@ class SaleSubscriptionSISEA(models.Model):
                             "identificadorUnico": str(identificadorUnico),
                             "email": str(email)
                         }
-                        _logger.warning(_("Laro"))
-                        #res_post = requests.post(url_laro, json=data)
+                       
+                        res_post = requests.post(url_laro, json=data)
 
-                        #respuesta_dict = json.loads(res_post.text)
+                        respuesta_dict = json.loads(res_post.text)
                         if respuesta_dict.get("codigoRespuesta") == "00":
                             charge._process_payment(respuesta_dict)
                         else:
