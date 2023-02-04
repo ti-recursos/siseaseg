@@ -3,6 +3,8 @@ from odoo.exceptions import UserError
 from cryptography.fernet import Fernet
 import base64
 
+import requests
+import json
 import datetime
 import pytz
 from time import strftime, gmtime
@@ -62,6 +64,7 @@ class AutomaticChargeLine(models.Model):
     send = fields.Boolean(string="Recurring Charges Send", default=False)
 
     bank_answer = fields.Char(string="Bank Answer", required=False)
+    json_post = fields.Char(string="JSON", required=False)
     n_autorizacion = fields.Char(string="Authorization Number", required=False)
     observacion = fields.Char(string="Notes", required=False)
 
@@ -148,6 +151,108 @@ class AutomaticChargeLine(models.Model):
     # Este código se encargará de crear el pago del documento
     #
     # -------------------------------------------------------------------------
+
+    def send_manual_laro_recurring_charges(self):
+        string = ""
+        contador = 1
+        total_cobros = len(self)
+        amount_total = 0
+
+        _logger.info("LARO MANUAL: Documentos por enviar %s" % total_cobros)
+
+        for charge in self:
+            key = charge.company_id.tir_key
+            _logger.info("LARO MANUAL: Iniciando proceso %s de %s: Cargo: %s" % (contador, total_cobros, charge.name))
+
+            nro = str(charge.card_id.n_card).encode('ascii', errors='ignore').decode()
+            vcm = str(charge.card_id.date_due).encode('ascii', errors='ignore').decode()
+            nro_afilidado = charge.company_id.nr_afiliado
+
+            card_n = charge.card_id._decrypt(bytes(nro, 'utf-8'), key).decode()
+            date_due = charge.card_id._decrypt(bytes(vcm, 'utf-8'), key).decode()
+            if charge.contract:
+                comment = "Contrato: " + str(charge.contract.code) + " "
+            else:
+                comment = "Factura: " + str(charge.move_id.name) + " "
+
+            # Re calculo el monto en caso de que el documento esté pagado "parcialmente"
+            if charge.move_id.payment_state == "partial":
+                if charge.move_id.currency_id.id != charge.company_id.currency_id.id:
+                    convert_amount = charge.move_id.currency_id._convert(
+                        charge.move_id.amount_residual,
+                        charge.company_id.company_id.currency_id,
+                        charge.company_id,
+                        charge.move_id.date
+                    )
+                    charge.amount_total = convert_amount
+                else:
+                    convert_amount = charge.move_id.amount_residual
+                    charge.amount_total = convert_amount
+            else:
+                convert_amount = charge.amount_total
+
+            if charge.move_id.payment_state not in ("paid", "reversed"):
+                total = "{:.2f}".format(convert_amount)
+                amount_total += convert_amount
+
+                if not False in [nro, vcm, nro_afilidado, card_n, date_due, comment, total]:
+                    #f = open(fp.name, "w")
+                    # total_str = str(total).zfill(10)
+                    # if contador == len(recurring_charges):
+                    #     string += (card_n + total_str + nro_afilidado + send_date + date_due.replace('/', '') + comment + date_cr)
+                    # else:
+                    #     string += (card_n + total_str + nro_afilidado + send_date + date_due.replace('/', '') + comment + date_cr + "\r\n")
+
+                    url_laro = charge.company_id.url_laro_automatic_charge
+
+                    if url_laro[-1:] == '/':
+                        url_laro = url_laro[:-1]
+
+                    token = charge.company_id.token_laro
+                    id_laro = charge.company_id.id_laro
+                    idTransaccion = 1
+                    fechaVencimiento = date_due.replace('/', '')
+                    email = charge.move_id.partner_id.email
+                    identificadorUnico = charge.id
+                    monto = charge.amount_total
+
+                    data = {
+                        "idUsuario": str(id_laro),
+                        "token":  str(token),
+                        "idTransaccion": idTransaccion,
+                        "tarjeta":  str(card_n),
+                        "fechaVencimiento": str(fechaVencimiento),
+                        "monto": monto,
+                        "identificadorUnico": str(identificadorUnico),
+                        "email": str(email)
+                    }
+                    json_str = str(data)
+                    charge.json_post = json_str
+                    _logger.info("LARO MANUAL: Información a enviar: %s" % json_str)
+
+                    res_post = requests.post(url_laro, json=data)
+
+                    respuesta_dict = json.loads(res_post.text)
+                    if respuesta_dict.get("codigoRespuesta") == "00":
+                        charge._process_payment(respuesta_dict)
+                    else:
+                        charge.n_autorizacion = respuesta_dict.get('autorizacion')
+                        charge.observacion = str(respuesta_dict)
+
+                        charge.processed = True
+                        charge.payment_state = 'no_auth'
+
+                    charge.send = True
+
+                    contador += 1
+
+                else:
+                    _logger.warning(_("Documento: #" + charge.name + " no se pudo aplicar el cargo automático"))
+            else:
+                charge.send = True
+                charge.payment_state = 'cancel'
+                contador += 1
+            total = 0
 
     def _process_payment(self, datos):
         '''

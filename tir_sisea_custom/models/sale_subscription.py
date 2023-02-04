@@ -410,7 +410,7 @@ class SaleSubscriptionSISEA(models.Model):
     # -------------------------------------------------------------------------
 
     @api.model
-    def _laro_recurring_charges(self, automatic=False):
+    def _laro_recurring_charges(self, max_documents=30):
         current_date = datetime.date.today()
 
         now_utc = datetime.datetime.now(pytz.timezone('UTC'))
@@ -418,13 +418,17 @@ class SaleSubscriptionSISEA(models.Model):
         date_cr = now_cr.strftime("%Y%m%d")
         send_date = now_cr.strftime("%d%m%Y")
         domain = [('date_doc', '=', date_cr), ('send', '=', False)]
-        recurring_charges = self.env['automatic.charge.line'].sudo().search(domain)
+        recurring_charges = self.env['automatic.charge.line'].sudo().search(domain, limit=max_documents)
         key = self.env.user.company_id.tir_key
         string = ""
-        contador = 0
+        contador = 1
+        total_cobros = len(recurring_charges)
         amount_total = 0
-        if len(recurring_charges) > 0:
+        
+        _logger.info("LARO: Documentos por enviar %s" % total_cobros)
+        if total_cobros > 0:
             for charge in recurring_charges:
+                _logger.info("LARO: Iniciando proceso %s de %s: Cargo: %s" % (contador, total_cobros, charge.name))
 
                 nro = str(charge.card_id.n_card).encode('ascii', errors='ignore').decode()
                 vcm = str(charge.card_id.date_due).encode('ascii', errors='ignore').decode()
@@ -488,7 +492,10 @@ class SaleSubscriptionSISEA(models.Model):
                             "identificadorUnico": str(identificadorUnico),
                             "email": str(email)
                         }
-                       
+                        json_str = str(data)
+                        charge.json_post = json_str
+                        _logger.info("LARO: Información a enviar: %s" % json_str)
+
                         res_post = requests.post(url_laro, json=data)
 
                         respuesta_dict = json.loads(res_post.text)
@@ -510,7 +517,7 @@ class SaleSubscriptionSISEA(models.Model):
                 else:
                     charge.send = True
                     charge.payment_state = 'cancel'
-                    # contador += 1
+                    contador += 1
                 total = 0
 
     @api.model
