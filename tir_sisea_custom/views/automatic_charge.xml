@@ -68,6 +68,7 @@
                     </header>
                     <sheet>
                         <field name="name" invisible="1"/>
+                        <field name="send" invisible="1"/>
 
                         <field name="payment_state" invisible="1"/>
                         <field name="processed" invisible="1"/>
