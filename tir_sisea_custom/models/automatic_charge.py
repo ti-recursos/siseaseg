@@ -3,6 +3,8 @@ from odoo.exceptions import UserError
 from cryptography.fernet import Fernet
 import base64
 
+import requests
+import json
 import datetime
 import pytz
 from time import strftime, gmtime
