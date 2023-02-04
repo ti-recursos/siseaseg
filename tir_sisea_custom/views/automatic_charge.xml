@@ -64,7 +64,8 @@
                 <form string="Charge Line Information">
                     <header>
                         <button name="resend" type="object" string="RESEND" style="background-color:#00A09D; color: white" attrs="{'invisible':[('payment_state', '!=', 'no_auth'), ('processed', '!=', True)]}"></button>
-                     </header>
+                        <button name="send_manual_laro_recurring_charges" type="object" string="ENVIAR MANUALMENTE" style="background-color:#00A09D; color: white" attrs="{'invisible':[('send', '=', True)]}"></button>
+                    </header>
                     <sheet>
                         <field name="name" invisible="1"/>
 
