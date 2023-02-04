@@ -89,6 +89,7 @@
                             <field name="date_doc"/>
                             <field name="bank_answer" readonly="1"/>
                             <field name="n_autorizacion" readonly="1"/>
+                            <field name="json_post" readonly="1" groups="base.group_no_one"/>
                             <field name="observacion" readonly="1"/>
                         </group>
 
