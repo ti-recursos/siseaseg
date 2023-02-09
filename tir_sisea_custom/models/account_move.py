@@ -35,6 +35,14 @@ class AccountMove(models.Model):
             })
             inv.proceso_gestion = True
 
+class AccountMoveLine(models.Model):
+    _inherit = "account.move.line"
+    _description = "Move Line"
+
+    @api.constrains('product_uom_id')
+    def _check_product_uom_category_id(self):
+        pass
+            
 class AccountMoveGestion(models.Model):
     _name = "account.move.gestion.line"
     _description = "Lineas de Gestion de Contabilidad"
